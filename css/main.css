@@ -1774,7 +1774,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c16721;
+  background: #4bf6af;
 }
 .feed-link,
 .chat {
@@ -3245,6 +3245,12 @@ span#yu-2 {
   border-top: 1px solid #222;
   border-bottom: 1px solid #222;
   font-size: 130%;
+}
+body {
+  background: url("https://source.unsplash.com/random/1600x900");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
 }
 @-moz-keyframes animate-yu-1 {
   0% {
