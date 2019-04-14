@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[笑忘录]]></title>
+    <url>%2F2019%2F04%2F14%2F%E7%AC%91%E5%BF%98%E5%BD%95%2F</url>
+    <content type="text"><![CDATA[人与政权的斗争，就是记忆与遗忘的斗争。 –米兰昆德拉 今天下午看到了一些东西。这些东西颠覆了我的认知。让 我感到无奈，无力，压抑。 我很难受，但是却没法和人说。我深知互联网不是可以畅所欲言的地方。 在这一点上，他们是成功的。身边也无人可说，因为很多人都不知道，至少我身边的人应该是不知道。在这一点上，他们也是成功的。 但这样是不对的，不应该以这样的方式来对待。 我们不应该忘记，我们也不能忘记，我们需要一个说法。 我避免了很多的敏感词汇，这样的叙述让我很难受，丝毫表达不出我所想。但我又很怂，我不知道写在这里有没有事。在一点上，我更加敬佩那些能够勇于发声的人。这样的人，最终都不会有什么好的结果。但这样的人，才是真正伟大的人。 写出来这些话，我认为这样能让我舒服一点，但是好像没什么用。了解了更多，只会觉得我们更加可悲。似乎理解了一些人，也感觉自己之前的思想很可笑，无知。 我希望她能够等到那一天的到来，如果不行，我希望我可以等到那一天的到来。如果还不行，至少希望自己到时不要已经变成一个麻木不堪，对什么都不在意的人。]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>文字</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo插入图片]]></title>
     <url>%2F2019%2F04%2F14%2Fpictest%2F</url>
     <content type="text"><![CDATA[1.更改 _config.yml 配置文件首先确认_config.yml 中有 post_asset_folder:true。Hexo 提供了一种更方便管理 Asset 的设定：post_asset_folder当您设置post_asset_folder为true参数后，在建立文件时，Hexo会自动建立一个与文章同名的文件夹，您可以把与该文章相关的所有资源都放到那个文件夹，如此一来，您便可以更方便的使用资源。 2.安装插件到博客的根目录下执行npm install https://github.com/CodeFalling/hexo-asset-image --save命令来进行插件的安装，用于加载本地文件。 3.创建文章执行 hexo new page pictest 创建文章。执行后我们会发现，这次创建 pictest.md 文章的同时，还会多出来一个 pictest 的文件夹。我们可以把文章里所用到的静态资源都放在这里，然后在文章里进行引用。 4.引用方式![图片别名随便写](pictest/图片名称.jpg) 5.引用我们来引用一张图片试一下 6.部署三连hexo cleanhexo ghexo d 7.打开浏览器查看是否成功]]></content>
@@ -14,7 +25,7 @@
   <entry>
     <title><![CDATA[Markdown语法初试]]></title>
     <url>%2F2019%2F04%2F12%2FMarkdown%E8%AF%AD%E6%B3%95%E5%88%9D%E8%AF%95%2F</url>
-    <content type="text"><![CDATA[1.标题测试1.1不错 1.2还可以吧 1.3应该行 2.链接测试2.1 普通链接这是我的微博这是我的简书代码：[这是我的微博](https://weibo.com/u/6059487421?is_hot=1/) [这是我的简书](https://www.jianshu.com/u/21a1a8bdb771/) 2.2 自动链接这是我的微博：https://weibo.com/u/6059487421?is_hot=1这是我的简书：https://www.jianshu.com/u/21a1a8bdb771 3.代码测试3.1 行内代码system.out.println(&quot;你好！&quot;) 3.2 多行代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546package cn.hfbin.sync003;/** * 对象锁的同步和异步问题 * @author cn.hfbin * */public class MyObject &#123; public synchronized void method1()&#123; try &#123; System.out.println(Thread.currentThread().getName()); Thread.sleep(4000); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125; /** synchronized */ public void method2()&#123; System.out.println(Thread.currentThread().getName()); &#125; public static void main(String[] args) &#123; final MyObject mo = new MyObject(); Thread t1 = new Thread(new Runnable() &#123; @Override public void run() &#123; mo.method1(); &#125; &#125;,&quot;t1&quot;); Thread t2 = new Thread(new Runnable() &#123; @Override public void run() &#123; mo.method2(); &#125; &#125;,&quot;t2&quot;); t1.start(); t2.start(); &#125;&#125; 4.引用测试 我已经说过：我向来是不惮以最坏的恶意来推测中国人的。但这回却很有几点出于我的意外。一是当局者竟会这样地凶残，一是流言家竟至如此之下劣，一是中国的女性临难竟能如是之从容。表示尽管自己惯于冷眼看待军阀政府的文过饰非，从最坏最恶毒的方面去推测他们可能的做法，仍然料不到他们竟然凶残到超出自己的想象。 ​]]></content>
+    <content type="text"><![CDATA[1.标题测试1.1不错 1.2还可以吧 1.3应该行 2.链接测试2.1 普通链接这是我的微博这是我的简书代码：[这是我的微博](https://weibo.com/u/6059487421?is_hot=1/)[这是我的简书](https://www.jianshu.com/u/21a1a8bdb771/) 2.2 自动链接这是我的微博：https://weibo.com/u/6059487421?is_hot=1这是我的简书：https://www.jianshu.com/u/21a1a8bdb771 3.代码测试3.1 行内代码system.out.println(&quot;你好！&quot;) 3.2 多行代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546package cn.hfbin.sync003;/** * 对象锁的同步和异步问题 * @author cn.hfbin * */public class MyObject &#123; public synchronized void method1()&#123; try &#123; System.out.println(Thread.currentThread().getName()); Thread.sleep(4000); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125; /** synchronized */ public void method2()&#123; System.out.println(Thread.currentThread().getName()); &#125; public static void main(String[] args) &#123; final MyObject mo = new MyObject(); Thread t1 = new Thread(new Runnable() &#123; @Override public void run() &#123; mo.method1(); &#125; &#125;,&quot;t1&quot;); Thread t2 = new Thread(new Runnable() &#123; @Override public void run() &#123; mo.method2(); &#125; &#125;,&quot;t2&quot;); t1.start(); t2.start(); &#125;&#125; 4.引用测试 我已经说过：我向来是不惮以最坏的恶意来推测中国人的。但这回却很有几点出于我的意外。一是当局者竟会这样地凶残，一是流言家竟至如此之下劣，一是中国的女性临难竟能如是之从容。表示尽管自己惯于冷眼看待军阀政府的文过饰非，从最坏最恶毒的方面去推测他们可能的做法，仍然料不到他们竟然凶残到超出自己的想象。 ​]]></content>
       <categories>
         <category>hexo</category>
       </categories>
