@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[hexo插入图片]]></title>
     <url>%2F2019%2F04%2F14%2Fpictest%2F</url>
-    <content type="text"><![CDATA[1.更改 _config.yml 配置文件首先确认_config.yml 中有 post_asset_folder:true。Hexo 提供了一种更方便管理 Asset 的设定：post_asset_folder当您设置post_asset_folder为true参数后，在建立文件时，Hexo会自动建立一个与文章同名的文件夹，您可以把与该文章相关的所有资源都放到那个文件夹，如此一来，您便可以更方便的使用资源。 2.安装插件到博客的根目录下执行npm install https://github.com/CodeFalling/hexo-asset-image --save命令来进行插件的安装，用于加载本地文件。 3.创建文章执行 hexo new page pictest 创建文章。执行后我们会发现，这次创建 pictest.md 文章的同时，还会多出来一个 pictest 的文件夹。我们可以把文章里所用到的静态资源都放在这里，然后在文章里进行引用。 4.引用方式 5.引用我们来引用一张图片试一下 6.部署三连hexo cleanhexo ghexo d 7.打开浏览器查看是否成功]]></content>
+    <content type="text"><![CDATA[1.更改 _config.yml 配置文件首先确认_config.yml 中有 post_asset_folder:true。Hexo 提供了一种更方便管理 Asset 的设定：post_asset_folder当您设置post_asset_folder为true参数后，在建立文件时，Hexo会自动建立一个与文章同名的文件夹，您可以把与该文章相关的所有资源都放到那个文件夹，如此一来，您便可以更方便的使用资源。 2.安装插件到博客的根目录下执行npm install https://github.com/CodeFalling/hexo-asset-image --save命令来进行插件的安装，用于加载本地文件。 3.创建文章执行 hexo new page pictest 创建文章。执行后我们会发现，这次创建 pictest.md 文章的同时，还会多出来一个 pictest 的文件夹。我们可以把文章里所用到的静态资源都放在这里，然后在文章里进行引用。 4.引用方式![图片别名随便写](pictest/图片名称.jpg) 5.引用我们来引用一张图片试一下 6.部署三连hexo cleanhexo ghexo d 7.打开浏览器查看是否成功]]></content>
       <categories>
         <category>hexo</category>
       </categories>
