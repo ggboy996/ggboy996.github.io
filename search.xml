@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[认识IO]]></title>
+    <url>%2F2019%2F04%2F25%2F%E8%AE%A4%E8%AF%86IO%2F</url>
+    <content type="text"><![CDATA[大多数应用程序都需要实现与设备之间的数据传输。在Java中，将通过不同输入输出设备(键盘，内存，显示器，网络等)之间的数据传输抽象描述为”流”。Java中的流都位于 java.io 包中，称为IO(输入输出)流。 1.字节流1.1 字节流的概念在计算机中，无论是文本、图片、音频还是视频，所有的文件都是以二进制(字节)形式存在的。IO流中针对字节的输入输出提供了一系列的流，统称为字节流。在JDK中，提供了两个抽象类 InputStream 和 OutputStream ,他们是字节流的顶级父类，所有的字节输入流都继承自 InputStream ，所有的字节输出流都继承自 OutputStream 。 1.2 字节流读写文件针对文件的独写，JDK专门提供了两个类，分别是 FileInputStream 和 FileOutputStream 。FileInputStream 是 InputStream 的子类，它是操作文件的字节输入流，专门用于读取文件中的数据。FileOutputStream 是 OutputStream 的子类，它是操作文件的字节输出流，专门用于把数据写入文件。 1.3 字节流的缓冲区主要代码：**12345byte[] buff = new byte[1024];int len;while((len=in.read(buff))!=-1)&#123;out.write(buff,0,len)&#125; **上述代码实现了用缓冲区来拷贝文件。首先定义了一个字节数组，作为缓冲区。字节数组被填满后，执行写入，把字节数组里的内容全部写入。最后输出流关闭时，也会执行写入，可以防止数组里没有写满的没有写入文件。 1.4 字节缓冲流在IO包中提供两个带缓冲的字节流，分别是 BufferedInputStream 和 BufferedOutputStream 。简单理解就是，自带了缓冲区的字节流。使用方法，把类包装起来。主要代码如下：BufferedInputStream bis = new BufferedInputStream(new FileInputStream(&quot;src.txt&quot;));就这样包起来，所以也叫包装流。 2.字符流InputStream 类和 OutputStream 类在读写文件时操作的都是字节。同样，JDK也提供了字符流，用来操作字符。Reader 和 Writer 分别是两个抽象的顶级父类。Reader是字符输入流，用与读取字符。Writer是字符输出流，用于写入字符。 2.1 字符流操作文件FileReader 是 Reader 的子类，可以读取一个或一组字符。FileWriter 是 Writer 的子类，用于写入字符。同字节缓冲流一样，字符也有字符缓冲流 BufferedReader 和 BufferedWriter 。操作方法也一样。需要注意的是，BufferedWriter 中的一个重要方法 readLine()，和 FileOutputStream 里的 read()，用法一样，区别是read()一次读取一个字节，而readLine()一次读取一行字符。需要注意。 2.2 转换流字节流和字符流之间可以互相转换。利用 InputStreamReader 和 OutputStreamWriter 这两个类进行转换。转换流其实也是一种包装流，其中 OutputStreamWriter 是 Writer 的子类,InputStreamReader 是 Reader 的子类。用的时候包装一下就可以了，和上面两个缓冲流用法一样。 3.其他流3.1 ObjectInputStream 和 ObjectOutputStream程序运行时，会创建对象，程序结束后，这些对象会被垃圾回收。如果希望永久保存这些对象，则可以将对象转为字节数据写入硬盘，这个过程叫对象序列化。JDK提供了 ObjectOutputStream 来实现序列化, ObjectInputStream 用来反序列化。当对象序列化时，必须保证对象实现了Serializable接口，否则程序会报错。]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>IO</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[class文件装载流程]]></title>
     <url>%2F2019%2F04%2F15%2Fclass%E6%96%87%E4%BB%B6%E8%A3%85%E8%BD%BD%E6%B5%81%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[1.装载流程图class文件的装载流程如图所示。 2.类装载的条件首先我们要搞清楚，class只有在必须要使用时才会被装载。Java虚拟机规定，一个类或接口在初次使用前，必须要进行初始化。这里指的“使用”，是指主动使用，主动使用只有下列几种情况：· 当创建一个类的实例时，比如使用new关键字，或者通过反射，克隆，反序列化· 当调用类的静态方法，即当使用了字节码 invokestatic 指令· 当使用类或接口的静态字段时（final常量除外），比如，使用 getstatic 或者 putstatic 指令· 当使用 java.lang.refect 包中的方法反射类的方法时· 当初始化子类时，要求先初始化父类· 作为启动虚拟机，含有main()方法的那个类 3.流程分析3.1 加载类加载类处于类装载的第一个阶段。在加载类时，java虚拟机必须完成以下工作:· 通过类的全名，获取类的二进制数据流· 解析类的二进制数据流为方法区内的数据结构· 创建java.lang.Class 类的实例，表示该类型 对于类的二进制流数据，虚拟机可以通过多种途径产生和获得。最一般地是通过文件系统读入一个class文件。在获取类的二进制信息后，Java虚拟机就会处理这些数据，并最终转化为一个java.lang.Class的实例，java.lang.Class实例是访问类型元数据的接口，也是实现反射的关键数据。通过class类提供的接口，可以访问一个类的方法，字段等信息。 3.2 连接连接可以分为三个步骤：验证，准备，解析。 3.2.1 验证类当类加载到系统后，就开始连接操作，验证是连接操作的第一步。大体上Java虚拟机需要做以下的检查：检查的内容如图所示，比较详细，我就不一一说明了。 3.2.2 准备当一个类验证通过时，虚拟机就会进入准备阶段。在这个阶段，虚拟机就会为这个类分配相应的内存空间，并设置初始值。如果类中存在常量字段，那么常量字段也会在准备阶段被附上正确的值，这个赋值属于Java虚拟机的行为，属于变量的初始化。在这个阶段，不会有任何Java代码被执行。 3.2.3 解析类在准备阶段完成后，就进入到了解析阶段。解析阶段的工作就是将类、接口、字段和方法的符号引用转为直接引用。Java虚拟机为每个类都准备了一张方法表，将其所有的方法都列在表中，当需要调用一个类的方法的时候，只要知道这个方法在方法表中的偏移量就可以直接调用该方法。通过解析操作，符号引用就可以转变为目标方法在类中方法表中的位置，从而使得方法被成功调用。这就是解析阶段的工作，将类、接口、字段和方法的符号引用转为直接引用。 3.3 初始化类的初始化是类装载的最后一个阶段。此时，类才会开始执行Java字节码。主要工作是执行类的初始化方法 。方法是由编译器自动生成的，它是由类静态成员的赋值语句以及 static 语句结合产生的。]]></content>

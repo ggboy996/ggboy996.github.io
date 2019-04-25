@@ -96,16 +96,18 @@
 
 
 
-  <meta name="description" content="人生苦短，及时行乐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ggboy">
-<meta property="og:url" content="http://ggboy996.github.io/tags/hexo/index.html">
+  <meta name="description" content="大多数应用程序都需要实现与设备之间的数据传输。在Java中，将通过不同输入输出设备(键盘，内存，显示器，网络等)之间的数据传输抽象描述为”流”。Java中的流都位于 java.io 包中，称为IO(输入输出)流。  1.字节流1.1 字节流的概念在计算机中，无论是文本、图片、音频还是视频，所有的文件都是以二进制(字节)形式存在的。IO流中针对字节的输入输出提供了一系列的流，统称为字节流。在JDK中">
+<meta name="keywords" content="IO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="认识IO">
+<meta property="og:url" content="http://ggboy996.github.io/2019/04/25/认识IO/index.html">
 <meta property="og:site_name" content="ggboy">
-<meta property="og:description" content="人生苦短，及时行乐">
+<meta property="og:description" content="大多数应用程序都需要实现与设备之间的数据传输。在Java中，将通过不同输入输出设备(键盘，内存，显示器，网络等)之间的数据传输抽象描述为”流”。Java中的流都位于 java.io 包中，称为IO(输入输出)流。  1.字节流1.1 字节流的概念在计算机中，无论是文本、图片、音频还是视频，所有的文件都是以二进制(字节)形式存在的。IO流中针对字节的输入输出提供了一系列的流，统称为字节流。在JDK中">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-25T07:26:00.039Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ggboy">
-<meta name="twitter:description" content="人生苦短，及时行乐">
+<meta name="twitter:title" content="认识IO">
+<meta name="twitter:description" content="大多数应用程序都需要实现与设备之间的数据传输。在Java中，将通过不同输入输出设备(键盘，内存，显示器，网络等)之间的数据传输抽象描述为”流”。Java中的流都位于 java.io 包中，称为IO(输入输出)流。  1.字节流1.1 字节流的概念在计算机中，无论是文本、图片、音频还是视频，所有的文件都是以二进制(字节)形式存在的。IO流中针对字节的输入输出提供了一系列的流，统称为字节流。在JDK中">
 
 
 
@@ -113,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://ggboy996.github.io/tags/hexo/">
+  <link rel="canonical" href="http://ggboy996.github.io/2019/04/25/认识IO/">
 
 
 
@@ -123,7 +125,7 @@
   };
 </script>
 
-  <title>标签: hexo | ggboy</title>
+  <title>认识IO | ggboy</title>
   
 
 
@@ -171,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -264,7 +266,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -369,112 +371,207 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>hexo<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ggboy996.github.io/2019/04/25/认识IO/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="我爱死喷乱涂">
+      <meta itemprop="description" content="人生苦短，及时行乐">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ggboy">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/04/14/pictest/" itemprop="url">
-            
-              <span itemprop="name">hexo插入图片</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">认识IO
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-14T15:20:15+08:00" content="2019-04-14">
-          04-14
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-25 14:16:52" itemprop="dateCreated datePublished" datetime="2019-04-25T14:16:52+08:00">2019-04-25</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/12/Markdown语法初试/" itemprop="url">
-            
-              <span itemprop="name">Markdown语法初试</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-12T11:57:52+08:00" content="2019-04-12">
-          04-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <p><strong><br>大多数应用程序都需要实现与设备之间的数据传输。在Java中，将通过不同输入输出设备(键盘，内存，显示器，网络等)之间的数据传输抽象描述为”流”。<br>Java中的流都位于 java.io 包中，称为IO(输入输出)流。
+</strong></p>
+<h1 id="1-字节流"><a href="#1-字节流" class="headerlink" title="1.字节流"></a>1.字节流</h1><h2 id="1-1-字节流的概念"><a href="#1-1-字节流的概念" class="headerlink" title="1.1 字节流的概念"></a>1.1 字节流的概念</h2><p>在计算机中，无论是文本、图片、音频还是视频，所有的文件都是以二进制(字节)形式存在的。IO流中针对字节的输入输出提供了一系列的流，统称为字节流。<br>在JDK中，提供了两个抽象类 InputStream 和 OutputStream ,他们是字节流的顶级父类，所有的字节输入流都继承自 InputStream ，所有的字节输出流都继承自 OutputStream 。</p>
+<h2 id="1-2-字节流读写文件"><a href="#1-2-字节流读写文件" class="headerlink" title="1.2 字节流读写文件"></a>1.2 字节流读写文件</h2><p>针对文件的独写，JDK专门提供了两个类，分别是 FileInputStream 和 FileOutputStream 。<br>FileInputStream 是 InputStream 的子类，它是操作文件的字节输入流，专门用于读取文件中的数据。<br>FileOutputStream 是 OutputStream 的子类，它是操作文件的字节输出流，专门用于把数据写入文件。</p>
+<h2 id="1-3-字节流的缓冲区"><a href="#1-3-字节流的缓冲区" class="headerlink" title="1.3 字节流的缓冲区"></a>1.3 字节流的缓冲区</h2><p>主要代码：<br>**<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">byte[] buff = new byte[1024];</span><br><span class="line">int len;</span><br><span class="line">while((len=in.read(buff))!=-1)&#123;</span><br><span class="line">out.write(buff,0,len)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>**<br>上述代码实现了用缓冲区来拷贝文件。首先定义了一个字节数组，作为缓冲区。字节数组被填满后，执行写入，把字节数组里的内容全部写入。最后输出流关闭时，也会执行写入，可以防止数组里没有写满的没有写入文件。</p>
+<h2 id="1-4-字节缓冲流"><a href="#1-4-字节缓冲流" class="headerlink" title="1.4 字节缓冲流"></a>1.4 字节缓冲流</h2><p>在IO包中提供两个带缓冲的字节流，分别是 BufferedInputStream 和 BufferedOutputStream 。<br>简单理解就是，自带了缓冲区的字节流。<br>使用方法，把类包装起来。主要代码如下：<br><code>BufferedInputStream bis = new BufferedInputStream(new FileInputStream(&quot;src.txt&quot;));</code><br>就这样包起来，所以也叫包装流。</p>
+<h1 id="2-字符流"><a href="#2-字符流" class="headerlink" title="2.字符流"></a>2.字符流</h1><p>InputStream 类和 OutputStream 类在读写文件时操作的都是字节。同样，JDK也提供了字符流，用来操作字符。<br>Reader 和 Writer 分别是两个抽象的顶级父类。Reader是字符输入流，用与读取字符。Writer是字符输出流，用于写入字符。  </p>
+<h2 id="2-1-字符流操作文件"><a href="#2-1-字符流操作文件" class="headerlink" title="2.1 字符流操作文件"></a>2.1 字符流操作文件</h2><p>FileReader 是 Reader 的子类，可以读取一个或一组字符。<br>FileWriter 是 Writer 的子类，用于写入字符。<br>同字节缓冲流一样，字符也有字符缓冲流 BufferedReader 和 BufferedWriter 。操作方法也一样。<br>需要注意的是，BufferedWriter 中的一个重要方法 readLine()，和 FileOutputStream 里的 read()，用法一样，区别是read()一次读取一个字节，而readLine()一次读取一行字符。需要注意。</p>
+<h2 id="2-2-转换流"><a href="#2-2-转换流" class="headerlink" title="2.2 转换流"></a>2.2 转换流</h2><p>字节流和字符流之间可以互相转换。利用 InputStreamReader 和 OutputStreamWriter 这两个类进行转换。<br>转换流其实也是一种包装流，其中 OutputStreamWriter 是 Writer 的子类,InputStreamReader 是 Reader 的子类。<br>用的时候包装一下就可以了，和上面两个缓冲流用法一样。</p>
+<h1 id="3-其他流"><a href="#3-其他流" class="headerlink" title="3.其他流"></a>3.其他流</h1><h2 id="3-1-ObjectInputStream-和-ObjectOutputStream"><a href="#3-1-ObjectInputStream-和-ObjectOutputStream" class="headerlink" title="3.1 ObjectInputStream 和 ObjectOutputStream"></a>3.1 ObjectInputStream 和 ObjectOutputStream</h2><p>程序运行时，会创建对象，程序结束后，这些对象会被垃圾回收。如果希望永久保存这些对象，则可以将对象转为字节数据写入硬盘，这个过程叫对象序列化。<br>JDK提供了 ObjectOutputStream 来实现序列化, ObjectInputStream 用来反序列化。<br>当对象序列化时，必须保证对象实现了Serializable接口，否则程序会报错。</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IO/" rel="tag"># IO</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/15/class文件装载流程/" rel="next" title="class文件装载流程">
+                <i class="fa fa-chevron-left"></i> class文件装载流程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzY5MC8yMDIzMA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -494,8 +591,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -654,6 +760,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-字节流"><span class="nav-number">1.</span> <span class="nav-text">1.字节流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-字节流的概念"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 字节流的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-字节流读写文件"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 字节流读写文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-字节流的缓冲区"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 字节流的缓冲区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-字节缓冲流"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 字节缓冲流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-字符流"><span class="nav-number">2.</span> <span class="nav-text">2.字符流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-字符流操作文件"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 字符流操作文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-转换流"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 转换流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-其他流"><span class="nav-number">3.</span> <span class="nav-text">3.其他流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-ObjectInputStream-和-ObjectOutputStream"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 ObjectInputStream 和 ObjectOutputStream</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -786,6 +909,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -801,6 +928,23 @@
 
   
 
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/04/25/认识IO/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
 
 
   
