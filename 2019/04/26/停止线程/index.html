@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="有三种方式来停止线程：**  正常执行 run()方法，run()方法结束后，线程终止。   使用 stop 方法强行终止线程，不推荐使用，会造成不可预料的后果。 使用 interrupt 方法中断线程。**现在对于第三种方式来详细了解一下。在Java的SDK中，Thread.java类提供了两种方法：    1) this.interrupted()：测试当前线程是否已经中断。2) this.i">
+  <meta name="description" content="有三种方式来停止线程：1. 正常执行 run()方法，run()方法结束后，线程终止。2. 使用 stop 方法强行终止线程，不推荐使用，会造成不可预料的后果。3. 使用 interrupt 方法中断线程。   现在对于第三种方式来详细了解一下。在Java的SDK中，Thread.java类提供了两种方法：1) this.interrupted()：测试当前线程是否已经中断。2) this.isi">
 <meta name="keywords" content="Java,多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="停止线程">
 <meta property="og:url" content="http://ggboy996.github.io/2019/04/26/停止线程/index.html">
 <meta property="og:site_name" content="ggboy">
-<meta property="og:description" content="有三种方式来停止线程：**  正常执行 run()方法，run()方法结束后，线程终止。   使用 stop 方法强行终止线程，不推荐使用，会造成不可预料的后果。 使用 interrupt 方法中断线程。**现在对于第三种方式来详细了解一下。在Java的SDK中，Thread.java类提供了两种方法：    1) this.interrupted()：测试当前线程是否已经中断。2) this.i">
+<meta property="og:description" content="有三种方式来停止线程：1. 正常执行 run()方法，run()方法结束后，线程终止。2. 使用 stop 方法强行终止线程，不推荐使用，会造成不可预料的后果。3. 使用 interrupt 方法中断线程。   现在对于第三种方式来详细了解一下。在Java的SDK中，Thread.java类提供了两种方法：1) this.interrupted()：测试当前线程是否已经中断。2) this.isi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-26T12:27:25.756Z">
+<meta property="og:updated_time" content="2019-04-26T12:34:44.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="停止线程">
-<meta name="twitter:description" content="有三种方式来停止线程：**  正常执行 run()方法，run()方法结束后，线程终止。   使用 stop 方法强行终止线程，不推荐使用，会造成不可预料的后果。 使用 interrupt 方法中断线程。**现在对于第三种方式来详细了解一下。在Java的SDK中，Thread.java类提供了两种方法：    1) this.interrupted()：测试当前线程是否已经中断。2) this.i">
+<meta name="twitter:description" content="有三种方式来停止线程：1. 正常执行 run()方法，run()方法结束后，线程终止。2. 使用 stop 方法强行终止线程，不推荐使用，会造成不可预料的后果。3. 使用 interrupt 方法中断线程。   现在对于第三种方式来详细了解一下。在Java的SDK中，Thread.java类提供了两种方法：1) this.interrupted()：测试当前线程是否已经中断。2) this.isi">
 
 
 
@@ -494,13 +494,8 @@
       
 
       
-        <p>有三种方式来停止线程：<br>**</p>
-<ol>
-<li>正常执行 run()方法，run()方法结束后，线程终止。  </li>
-<li>使用 stop 方法强行终止线程，不推荐使用，会造成不可预料的后果。</li>
-<li>使用 interrupt 方法中断线程。<br>**<br>现在对于第三种方式来详细了解一下。<br>在Java的SDK中，Thread.java类提供了两种方法：  </li>
-</ol>
-<p>1) this.interrupted()：测试当前线程是否已经中断。<br>2) this.isinterrupted()：测试线程是否已经中断。<br><strong><br>interrupted()是静态方法，所以我们用Thread.interrupted()方法表示，它调用的是currentThread().isInterrupted(true)方法，即说明是返回当前线程的是否已经中断的状态值，而且有清理中断状态的机制。而isInterrupted()是一个实例方法，所以我们用this.isInterrupted()方法表示，它调用的是isInterrupted(false)方法，意思是返回线程是否已经中断的状态值，与Thread.interrupted()方法相反，它没有清理中断状态的机制。
+        <p>有三种方式来停止线程：<br><strong>1. 正常执行 run()方法，run()方法结束后，线程终止。</strong><br><strong>2. 使用 stop 方法强行终止线程，不推荐使用，会造成不可预料的后果。</strong><br><strong>3. 使用 interrupt 方法中断线程。</strong>  </p>
+<p>现在对于第三种方式来详细了解一下。<br>在Java的SDK中，Thread.java类提供了两种方法：<br>1) this.interrupted()：测试当前线程是否已经中断。<br>2) this.isinterrupted()：测试线程是否已经中断。<br><strong><br>interrupted()是静态方法，所以我们用Thread.interrupted()方法表示，它调用的是currentThread().isInterrupted(true)方法，即说明是返回当前线程的是否已经中断的状态值，而且有清理中断状态的机制。而isInterrupted()是一个实例方法，所以我们用this.isInterrupted()方法表示，它调用的是isInterrupted(false)方法，意思是返回线程是否已经中断的状态值，与Thread.interrupted()方法相反，它没有清理中断状态的机制。
 </strong></p>
 <p>二者的区别在于：<br><strong><br>interrupted()是static方法，调用的时候要用Thread.interrupted()，而isInterrupted()是实例方法，调用时要用线程的实例调用；<br>Thread.interrupted()：测试当前线程是否已经是中断状态，执行后具有将状态标志清除为false的功能；<br>this.isInterrupted()：测试线程Thread对象是否已经是中断状态，但不清除状态标志。  
 </strong></p>
