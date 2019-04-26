@@ -1,13 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[停止线程]]></title>
+    <url>%2F2019%2F04%2F26%2F%E5%81%9C%E6%AD%A2%E7%BA%BF%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[有三种方式来停止线程：** 正常执行 run()方法，run()方法结束后，线程终止。 使用 stop 方法强行终止线程，不推荐使用，会造成不可预料的后果。 使用 interrupt 方法中断线程。**现在对于第三种方式来详细了解一下。在Java的SDK中，Thread.java类提供了两种方法： 1) this.interrupted()：测试当前线程是否已经中断。2) this.isinterrupted()：测试线程是否已经中断。interrupted()是静态方法，所以我们用Thread.interrupted()方法表示，它调用的是currentThread().isInterrupted(true)方法，即说明是返回当前线程的是否已经中断的状态值，而且有清理中断状态的机制。而isInterrupted()是一个实例方法，所以我们用this.isInterrupted()方法表示，它调用的是isInterrupted(false)方法，意思是返回线程是否已经中断的状态值，与Thread.interrupted()方法相反，它没有清理中断状态的机制。 二者的区别在于：interrupted()是static方法，调用的时候要用Thread.interrupted()，而isInterrupted()是实例方法，调用时要用线程的实例调用；Thread.interrupted()：测试当前线程是否已经是中断状态，执行后具有将状态标志清除为false的功能；this.isInterrupted()：测试线程Thread对象是否已经是中断状态，但不清除状态标志。 线程的停止——抛异常法1234567891011121314151617181920public class MyThread4 extends Thread &#123; @Override public void run() &#123; super.run(); try &#123; for (int i = 0; i &lt; 50000; i++) &#123; if (this.isInterrupted()) &#123; System.out.println( &quot;线程已经结束，我要退出&quot; );// return; //这是return法停止线程 throw new InterruptedException(); //抛异常法停止线程 &#125; System.out.println( &quot;i=&quot; + (i + 1) ); &#125; System.out.println( &quot;我是for下面的语句，我被执行说明线程没有真正结束&quot; ); &#125; catch (InterruptedException e) &#123; System.out.println( &quot;进入MyThread.java类中run方法的catch异常了&quot; ); e.printStackTrace(); &#125; &#125;&#125; 1234567891011public static void main(String[] args) &#123; try &#123; MyThread4 myThread4 = new MyThread4(); myThread4.start(); Thread.sleep( 20); myThread4.interrupt(); &#125; catch (InterruptedException e) &#123; System.out.println( &quot;main catch&quot; ); e.printStackTrace(); &#125; &#125; 推荐使用抛异常法。 线程的停止——在沉睡中停止这个名字非常好听，让我们看下具体是怎么实现的。12345678910111213141516171819202122public void run() &#123; super.run(); try &#123; System.out.println( &quot;begin run&quot; ); Thread.sleep( 500 ); System.out.println( &quot;begin end&quot; ); &#125; catch (InterruptedException e) &#123; System.out.println(&quot;在沉睡中终止&quot;); e.printStackTrace(); &#125; &#125; public static void main(String[] args) &#123; try &#123; MyThread5 thread5 = new MyThread5(); thread5.start(); Thread.sleep( 20 ); thread5.interrupt(); &#125; catch (InterruptedException e) &#123; System.out.println( &quot;main catch&quot; ); e.printStackTrace(); &#125; &#125; 其实就是在执行中断操作前，执行一个sleep()方法。那为什么这样就能停止线程呢？看这句话：当线程处于下面的状况时（（1）如果线程在调用 Object 类的 wait()、wait(long) 或 wait(long, int) 方法，或者该类的 join()、join(long)、join(long, int)、sleep(long) 或 sleep(long, int) 方法过程中受阻，则其中断状态将被清除，它还将收到一个InterruptedException异常。这个时候，我们可以通过捕获InterruptedException异常来终止线程的执行，具体可以通过return等退出或改变共享变量的值使其退出。）这样看来，其实这两个方法都属于抛异常法，一个是主动抛出异常，一个是调用sleep()后，被系统抛出异常。]]></content>
+      <categories>
+        <category>Java</category>
+        <category>多线程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[初识多线程]]></title>
+    <url>%2F2019%2F04%2F26%2F%E5%88%9D%E8%AF%86%E5%A4%9A%E7%BA%BF%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[开始系统地来学习多线程。采用边学变记录的方式。不想耽误太多时间来码字，所以我打算写的随意一点，以自己能看懂为目的，来记录一些需要记住的知识，便于日后的复习，虽然也可能根本不复习，但是记录还是有用的，至少能让后我现在加深一次记忆。 1. 进程，线程1.1 进程运行在内存中的exe程序，就是进程。就像任务管理器里看到的exe程序，都是正在运行的进程。 1.2 线程线程可以理解为，在进程中独立运行的子任务。打个比方，QQ.exe运行时就有很多子任务在同时运行，比如好友视频线程，下载文件线程，发送表情线程等等。这些不同的任务都能同时进行，这些子任务都可以理解为线程在工作。 1.3 线程的优点使用多线程，可以在同一时间同时运行不同种类的任务。通过一个图可以清楚的看到优点所在。使用多线程，任务2便不用等到任务1运行完才能运行。这是就是多线程的优点，使用多线程也就是在使用异步。 2. 使用多线程有两种方法来实现多线程，一种是继承Thread类，一种是实现Runnable接口。因为Java不支持多继承，一个子类只能有一个父类。所以当想创建的线程类已经有一个父类时，就不能再继承Thread类了，这时需要通过实现Runnable类来实现多线程。注意：启动多线程，必须使用thread.start()方法，且类里的方法名必须为run()，开启start()方法后，run()方法会被自动调用。另外还需要知道，执行start()方法的顺序不代表线程启动的顺序，顺序是随机的。 2.1 非线程安全问题指的是多个线程对同一个对象中的同一个实例变量进行操作时会出现值被更改、值不同步的情况，进而影响程序的执行流程。解决方法是在方法前加 synchronized 关键字。]]></content>
+      <categories>
+        <category>Java</category>
+        <category>多线程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[认识IO]]></title>
     <url>%2F2019%2F04%2F25%2F%E8%AE%A4%E8%AF%86IO%2F</url>
     <content type="text"><![CDATA[大多数应用程序都需要实现与设备之间的数据传输。在Java中，将通过不同输入输出设备(键盘，内存，显示器，网络等)之间的数据传输抽象描述为”流”。Java中的流都位于 java.io 包中，称为IO(输入输出)流。 1.字节流1.1 字节流的概念在计算机中，无论是文本、图片、音频还是视频，所有的文件都是以二进制(字节)形式存在的。IO流中针对字节的输入输出提供了一系列的流，统称为字节流。在JDK中，提供了两个抽象类 InputStream 和 OutputStream ,他们是字节流的顶级父类，所有的字节输入流都继承自 InputStream ，所有的字节输出流都继承自 OutputStream 。 1.2 字节流读写文件针对文件的独写，JDK专门提供了两个类，分别是 FileInputStream 和 FileOutputStream 。FileInputStream 是 InputStream 的子类，它是操作文件的字节输入流，专门用于读取文件中的数据。FileOutputStream 是 OutputStream 的子类，它是操作文件的字节输出流，专门用于把数据写入文件。 1.3 字节流的缓冲区主要代码：12345byte[] buff = new byte[1024];int len;while((len=in.read(buff))!=-1)&#123;out.write(buff,0,len)&#125; 上述代码实现了用缓冲区来拷贝文件。首先定义了一个字节数组，作为缓冲区。字节数组被填满后，执行写入，把字节数组里的内容全部写入。最后输出流关闭时，也会执行写入，可以防止数组里没有写满的没有写入文件。 1.4 字节缓冲流在IO包中提供两个带缓冲的字节流，分别是 BufferedInputStream 和 BufferedOutputStream 。简单理解就是，自带了缓冲区的字节流。使用方法，把类包装起来。主要代码如下：BufferedInputStream bis = new BufferedInputStream(new FileInputStream(&quot;src.txt&quot;));就这样包起来，所以也叫包装流。 2.字符流InputStream 类和 OutputStream 类在读写文件时操作的都是字节。同样，JDK也提供了字符流，用来操作字符。Reader 和 Writer 分别是两个抽象的顶级父类。Reader是字符输入流，用与读取字符。Writer是字符输出流，用于写入字符。 2.1 字符流操作文件FileReader 是 Reader 的子类，可以读取一个或一组字符。FileWriter 是 Writer 的子类，用于写入字符。同字节缓冲流一样，字符也有字符缓冲流 BufferedReader 和 BufferedWriter 。操作方法也一样。需要注意的是，BufferedWriter 中的一个重要方法 readLine()，和 FileOutputStream 里的 read()，用法一样，区别是read()一次读取一个字节，而readLine()一次读取一行字符。需要注意。 2.2 转换流字节流和字符流之间可以互相转换。利用 InputStreamReader 和 OutputStreamWriter 这两个类进行转换。转换流其实也是一种包装流，其中 OutputStreamWriter 是 Writer 的子类,InputStreamReader 是 Reader 的子类。用的时候包装一下就可以了，和上面两个缓冲流用法一样。 3.其他流3.1 ObjectInputStream 和 ObjectOutputStream程序运行时，会创建对象，程序结束后，这些对象会被垃圾回收。如果希望永久保存这些对象，则可以将对象转为字节数据写入硬盘，这个过程叫对象序列化。JDK提供了 ObjectOutputStream 来实现序列化, ObjectInputStream 用来反序列化。当对象序列化时，必须保证对象实现了Serializable接口，否则程序会报错。]]></content>
       <categories>
-        <category>java</category>
+        <category>Java</category>
+        <category>IO</category>
       </categories>
       <tags>
+        <tag>Java</tag>
         <tag>IO</tag>
       </tags>
   </entry>
