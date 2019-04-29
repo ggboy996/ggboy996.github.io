@@ -96,16 +96,18 @@
 
 
 
-  <meta name="description" content="人生苦短，及时行乐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ggboy">
-<meta property="og:url" content="http://ggboy996.github.io/categories/Java/IO/index.html">
+  <meta name="description" content="”非线程安全“会在多个线程对同一个对象中的实例对象进行并发访问时发生，产生的后果就是”脏读“，也就是取到的数据其实是被更改过的。而”线程安全“就是以获得的实例变量的值是经过同步处理的，不会出现脏读的现象。  #1.方法内的变量为线程安全 方法中的变量不存在非线程安全问题，这是方法内部的变量是私有的特性造成的。   #2.实例变量非线程安全 如果多个线程共同访问1个对象中的实例变量，需要在方法前添">
+<meta name="keywords" content="Java,多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="synchronized同步方法">
+<meta property="og:url" content="http://ggboy996.github.io/2019/04/29/synchronized同步方法/index.html">
 <meta property="og:site_name" content="ggboy">
-<meta property="og:description" content="人生苦短，及时行乐">
+<meta property="og:description" content="”非线程安全“会在多个线程对同一个对象中的实例对象进行并发访问时发生，产生的后果就是”脏读“，也就是取到的数据其实是被更改过的。而”线程安全“就是以获得的实例变量的值是经过同步处理的，不会出现脏读的现象。  #1.方法内的变量为线程安全 方法中的变量不存在非线程安全问题，这是方法内部的变量是私有的特性造成的。   #2.实例变量非线程安全 如果多个线程共同访问1个对象中的实例变量，需要在方法前添">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-29T10:17:44.653Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ggboy">
-<meta name="twitter:description" content="人生苦短，及时行乐">
+<meta name="twitter:title" content="synchronized同步方法">
+<meta name="twitter:description" content="”非线程安全“会在多个线程对同一个对象中的实例对象进行并发访问时发生，产生的后果就是”脏读“，也就是取到的数据其实是被更改过的。而”线程安全“就是以获得的实例变量的值是经过同步处理的，不会出现脏读的现象。  #1.方法内的变量为线程安全 方法中的变量不存在非线程安全问题，这是方法内部的变量是私有的特性造成的。   #2.实例变量非线程安全 如果多个线程共同访问1个对象中的实例变量，需要在方法前添">
 
 
 
@@ -113,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://ggboy996.github.io/categories/Java/IO/">
+  <link rel="canonical" href="http://ggboy996.github.io/2019/04/29/synchronized同步方法/">
 
 
 
@@ -123,7 +125,7 @@
   };
 </script>
 
-  <title>分类: IO | ggboy</title>
+  <title>synchronized同步方法 | ggboy</title>
   
 
 
@@ -171,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,7 +249,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -369,86 +371,224 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>IO<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ggboy996.github.io/2019/04/29/synchronized同步方法/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="我爱死喷乱涂">
+      <meta itemprop="description" content="人生苦短，及时行乐">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ggboy">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/04/25/认识IO/" itemprop="url">
-            
-              <span itemprop="name">认识IO</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">synchronized同步方法
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-25T14:16:52+08:00" content="2019-04-25">
-          04-25
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-29 16:20:38" itemprop="dateCreated datePublished" datetime="2019-04-29T16:20:38+08:00">2019-04-29</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/多线程/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>”非线程安全“会在多个线程对同一个对象中的实例对象进行并发访问时发生，产生的后果就是”脏读“，也就是取到的数据其实是被更改过的。而”线程安全“就是以获得的实例变量的值是经过同步处理的，不会出现脏读的现象。</p>
+</blockquote>
+<p>#1.方法内的变量为线程安全</p>
+<p>方法中的变量不存在非线程安全问题，这是方法内部的变量是私有的特性造成的。  </p>
+<p>#2.实例变量非线程安全</p>
+<p>如果多个线程共同访问1个对象中的实例变量，需要在方法前添加关键字 synchronized 。这样就不会出现非线程安全问题。  </p>
+<p>#3.多个对象多个锁</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Hbbq h1 = new Hbbq();</span><br><span class="line">Hbbq h2 = new Hbbq();</span><br><span class="line">Thread athread = new Thread(h1);</span><br><span class="line">athread.start();</span><br><span class="line">Thread bthread = new Thread(h2);</span><br><span class="line">bthread.start();</span><br></pre></td></tr></table></figure>
+<p>从以上代码可以看出，我们创建了两个 Hbbq 的实例对象。这样的话，加了 synchronized 的方法，便会产生两个锁，结果就不会是同步，而是以异步的方式运行的。<br>如果多个线程访问多个对象，JVM就会创建多个锁，就像上面的示例一样。同步的单词是 synchronized ，异步的单词是 asynchronized。</p>
+<p>#4.synchronized方法与锁对象</p>
+<p>当两个线程同时访问一个对象的不同的两个方法：<br>第一次实验的是一个同步的方法，一个不同步的方法<br>第二次实验的是两个都是同步的方法  </p>
+<p>代码我就不贴了，直接写结论：<br>1）A线程先持有object对象的lock锁，B线程可以以异步的方式调用object对象中的非synchronized类型的方法。<br>2）A线程先持有object对象的lock锁，B线程如果在这时调用object对象中的synchronized类型的方法则需等待，也就是同步。  </p>
+<p>#5.脏读</p>
+<p>出现脏读的原因就是不同步。解决的方法就是加上同步synchronized关键字。<br><strong>这里注意一点，当一个线程A调用了对象里加入synchronized关键字的X方法时，那么A线程就获得了X的方法锁，更准确的讲，是获得了这个对象的锁，其他线程必须等待A线程执行完毕才可以调用X方法，但其他线程可以随意调用其他的非synchronized同步方法。所以，需要把set 和 get 方法都加上 synchronized 关键字，这样的话就可以避免出现脏读。</strong>  </p>
+<p>#6.synchronized锁重入</p>
+<p>可重入锁的概念是：自己可以再次获取自己的内部锁。这样就可以调用 synchronized方法 里的 synchronized方法。<br>可重入锁也支持在父子类继承的环境中。在子类中调用父类里的变量，值也可以同步。  </p>
+<p>#7.出现异常，锁自动释放</p>
+<p>就是说，当一个线程执行的代码出现异常时，那么这个线程所持有的锁会被自动释放，然后别的线程就可以继续去调用这个方法了。  </p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/26/停止线程/" rel="next" title="停止线程">
+                <i class="fa fa-chevron-left"></i> 停止线程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzY5MC8yMDIzMA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -768,6 +908,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -783,6 +927,23 @@
 
   
 
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/04/29/synchronized同步方法/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
 
 
   
