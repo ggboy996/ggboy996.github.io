@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[synchronized同步语句块]]></title>
+    <url>%2F2019%2F05%2F02%2Fsynchronized%E5%90%8C%E6%AD%A5%E8%AF%AD%E5%8F%A5%E5%9D%97%2F</url>
+    <content type="text"><![CDATA[用关键字 synchronized 来声明方法在某些情况下是有弊端的，比如A线程调用了同步方法执行一个长时间的任务，那么B线程则必须等待比较长的时间。在这种情况下可以使用 synchronized同步语句块 来解决。 synchronized方法 是对当前对象加锁，而 synchronized同步语句块 是对某一个对象加锁。 1.用同步代码块解决同步方法的弊端同步方法的弊端上面说过了，就是效率慢。为什么同步代码块就能解决？因为当一个线程访问object的一个synchronized同步代码块时，另一个线程仍然可以访问该object对象中的非 synchronized(this) 同步代码块。 2.synchronized代码块间的同步性当一个线程访问object的 synchronized(this)同步代码块时，其他线程对同一个object中所有其他 synchronized(this)同步代码块的访问将被阻塞，这说明 synchronized 使用的对象监视器是一个。但可以异步访问 synchronized(其他对象) 的语句块。因为这时候他们的对象监视器就不是同一个了。 3.synchronized锁定的是当前对象synchronized(this)代码块锁定的是当前对象，和 synchronized方法是一样的。这就意味着，他们的对象监视器是同一个，会发生排斥。也就是说，当A线程在访问object的 synchronized(this)同步代码块的时候，那么B线程这时候访问object中的 synchronized方法就会受阻，必须等A线程访问结束，释放了锁后,B线程才能访问。因为他们持有的是同一个锁，都是锁定的当前对象。同一个object里的 synchronized(anthing) 和 synchronized(this) 是不互斥的，可以异步执行。同一个object里的 synchronized(anthing) 和 synchronized方法 是不互斥的，可以异步执行。同一个object里的 synchronized方法 和 synchronized(this) 是互斥的，必须同步执行。 4.synchronized(非this对象x)的三个结论“synchronized(非this对象x)”格式的写法是将x对象本身作为”对象监视器” 1)当多个线程同时执行 synchronized(x){}同步代码块时呈同步效果。2)当其他线程执行x对象中 synchronized同步方法时呈同步效果。3)当其他线程执行x对象方法里面的 synchronized(this)代码块时也呈同步效果。注意：如果其他线程调用的是不加 synchronized 关键字的方法时，还是异步调用 5.静态同步 synchronized方法与 synchronized(class)代码块synchronized关键字还可以用在 static静态方法上，这样写的话，就是对当前.java文件对应的Class类持锁。和 synchronized关键字加到非static静态方法不一样，这个是给对象上锁。 1)当A线程执行object里的 synchronized修饰的 static静态方法时，那么其他线程不能同时执行该object里用 synchronized修饰的static静态方法。属于互斥状态。1)当A线程执行object里的 synchronized修饰的 static静态方法时，其他线程可以执行该object里用 synchronized修饰的非static静态方法。不属于互斥状态，因为不是同一把锁。3)同步synchronized(xx.class)作用和 synchronized static 方法的作用一样。 synchronized static 方法需是xx.class里的。 6.数据类型String的常量池特性在jvm中具有String常量池缓存的功能。简单来说，就是我输一次A，如果String常量池没有A，那么这个A就会被保存在String常量池里。当我要用A时，这时就会把String常量池里的A指向变量。所有的A都是同一个。如果把A当作锁，那么便会出现相同的锁，就会出现问题。 7.锁对象的改变如果锁对象的值中途改变，那么锁也就会改变，马上会由同步变为异步。需要注意的是：只要对象不变，即使对象的属性被改变，运行的结果还是同步。比如对象是USER这个类，运行过程中，改变了USER里的一个属性name的值，但对象还是没变，还是会同步执行下去。]]></content>
+      <categories>
+        <category>Java</category>
+        <category>多线程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+        <tag>synchronized关键字</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[synchronized同步方法]]></title>
     <url>%2F2019%2F04%2F29%2Fsynchronized%E5%90%8C%E6%AD%A5%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[”非线程安全“会在多个线程对同一个对象中的实例对象进行并发访问时发生，产生的后果就是”脏读“，也就是取到的数据其实是被更改过的。而”线程安全“就是以获得的实例变量的值是经过同步处理的，不会出现脏读的现象。 #1.方法内的变量为线程安全 方法中的变量不存在非线程安全问题，这是方法内部的变量是私有的特性造成的。 #2.实例变量非线程安全 如果多个线程共同访问1个对象中的实例变量，需要在方法前添加关键字 synchronized 。这样就不会出现非线程安全问题。 #3.多个对象多个锁 123456Hbbq h1 = new Hbbq();Hbbq h2 = new Hbbq();Thread athread = new Thread(h1);athread.start();Thread bthread = new Thread(h2);bthread.start(); 从以上代码可以看出，我们创建了两个 Hbbq 的实例对象。这样的话，加了 synchronized 的方法，便会产生两个锁，结果就不会是同步，而是以异步的方式运行的。如果多个线程访问多个对象，JVM就会创建多个锁，就像上面的示例一样。同步的单词是 synchronized ，异步的单词是 asynchronized。 #4.synchronized方法与锁对象 当两个线程同时访问一个对象的不同的两个方法：第一次实验的是一个同步的方法，一个不同步的方法第二次实验的是两个都是同步的方法 代码我就不贴了，直接写结论：1）A线程先持有object对象的lock锁，B线程可以以异步的方式调用object对象中的非synchronized类型的方法。2）A线程先持有object对象的lock锁，B线程如果在这时调用object对象中的synchronized类型的方法则需等待，也就是同步。 #5.脏读 出现脏读的原因就是不同步。解决的方法就是加上同步synchronized关键字。这里注意一点，当一个线程A调用了对象里加入synchronized关键字的X方法时，那么A线程就获得了X的方法锁，更准确的讲，是获得了这个对象的锁，其他线程必须等待A线程执行完毕才可以调用X方法，但其他线程可以随意调用其他的非synchronized同步方法。所以，需要把set 和 get 方法都加上 synchronized 关键字，这样的话就可以避免出现脏读。 #6.synchronized锁重入 可重入锁的概念是：自己可以再次获取自己的内部锁。这样就可以调用 synchronized方法 里的 synchronized方法。可重入锁也支持在父子类继承的环境中。在子类中调用父类里的变量，值也可以同步。 #7.出现异常，锁自动释放 就是说，当一个线程执行的代码出现异常时，那么这个线程所持有的锁会被自动释放，然后别的线程就可以继续去调用这个方法了。 #8.同步不具有继承性 当一个子类继承一个父类时，子类重写父类的 synchronized 方法，却没有加关键字 synchronized，这样就会造成非线程安全(异步)。由此可以看出，同步不能继承。]]></content>
@@ -11,6 +25,7 @@
       <tags>
         <tag>Java</tag>
         <tag>多线程</tag>
+        <tag>synchronized关键字</tag>
       </tags>
   </entry>
   <entry>
