@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[volatile关键字]]></title>
+    <url>%2F2019%2F05%2F03%2Fvolatile%E5%85%B3%E9%94%AE%E5%AD%97%2F</url>
+    <content type="text"><![CDATA[关键字volatile的主要作用是使变量在多个线程间可见。具体来说就是，volatile关键字，可以强制的从公共内存中读取变量的值，这样就不会因为私有堆栈中的值和公共堆栈中的值不同步而导致错误。 1.volatile 和 synchronized 的比较1) volatile只能修饰于变量，而 synchronized可以修饰方法，以及代码块。2) 多线程访问 volatile不会发生阻塞，而 synchronized会出现阻塞。3) volatile能保证数据的可见性，但不能保证原子性。 synchronized两者都可以保证。4) volatile解决的是变量在多个线程之间的可见性，而 synchronized解决的是多个线程之间访问资源的同步性。 2. i++操作时的非线程安全问题表达式i++的操作步骤分解如下： 1)从内存中取出i的值2)计算i的值3)将i的值写到内存中 假如在第二步计算值的时候，另外一个线程也修改i的值，这时候就会出现脏数据。解决方法就是使用 synchronized关键字。 3.synchronized有和volatile一样的功能synchronized不仅可以保证同步，还可以保证可见性。在Java内存模型中，synchronized规定，线程在加锁时，先清空工作内存→在主内存中拷贝最新变量的副本到工作内存→执行完代码→将更改后的共享变量的值刷新到主内存中→释放互斥锁。]]></content>
+      <categories>
+        <category>Java</category>
+        <category>多线程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+        <tag>volatile关键字</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[synchronized同步语句块]]></title>
     <url>%2F2019%2F05%2F02%2Fsynchronized%E5%90%8C%E6%AD%A5%E8%AF%AD%E5%8F%A5%E5%9D%97%2F</url>
     <content type="text"><![CDATA[用关键字 synchronized 来声明方法在某些情况下是有弊端的，比如A线程调用了同步方法执行一个长时间的任务，那么B线程则必须等待比较长的时间。在这种情况下可以使用 synchronized同步语句块 来解决。 synchronized方法 是对当前对象加锁，而 synchronized同步语句块 是对某一个对象加锁。 1.用同步代码块解决同步方法的弊端同步方法的弊端上面说过了，就是效率慢。为什么同步代码块就能解决？因为当一个线程访问object的一个synchronized同步代码块时，另一个线程仍然可以访问该object对象中的非 synchronized(this) 同步代码块。 2.synchronized代码块间的同步性当一个线程访问object的 synchronized(this)同步代码块时，其他线程对同一个object中所有其他 synchronized(this)同步代码块的访问将被阻塞，这说明 synchronized 使用的对象监视器是一个。但可以异步访问 synchronized(其他对象) 的语句块。因为这时候他们的对象监视器就不是同一个了。 3.synchronized锁定的是当前对象synchronized(this)代码块锁定的是当前对象，和 synchronized方法是一样的。这就意味着，他们的对象监视器是同一个，会发生排斥。也就是说，当A线程在访问object的 synchronized(this)同步代码块的时候，那么B线程这时候访问object中的 synchronized方法就会受阻，必须等A线程访问结束，释放了锁后,B线程才能访问。因为他们持有的是同一个锁，都是锁定的当前对象。同一个object里的 synchronized(anthing) 和 synchronized(this) 是不互斥的，可以异步执行。同一个object里的 synchronized(anthing) 和 synchronized方法 是不互斥的，可以异步执行。同一个object里的 synchronized方法 和 synchronized(this) 是互斥的，必须同步执行。 4.synchronized(非this对象x)的三个结论“synchronized(非this对象x)”格式的写法是将x对象本身作为”对象监视器” 1)当多个线程同时执行 synchronized(x){}同步代码块时呈同步效果。2)当其他线程执行x对象中 synchronized同步方法时呈同步效果。3)当其他线程执行x对象方法里面的 synchronized(this)代码块时也呈同步效果。注意：如果其他线程调用的是不加 synchronized 关键字的方法时，还是异步调用 5.静态同步 synchronized方法与 synchronized(class)代码块synchronized关键字还可以用在 static静态方法上，这样写的话，就是对当前.java文件对应的Class类持锁。和 synchronized关键字加到非static静态方法不一样，这个是给对象上锁。 1)当A线程执行object里的 synchronized修饰的 static静态方法时，那么其他线程不能同时执行该object里用 synchronized修饰的static静态方法。属于互斥状态。1)当A线程执行object里的 synchronized修饰的 static静态方法时，其他线程可以执行该object里用 synchronized修饰的非static静态方法。不属于互斥状态，因为不是同一把锁。3)同步synchronized(xx.class)作用和 synchronized static 方法的作用一样。 synchronized static 方法需是xx.class里的。 6.数据类型String的常量池特性在jvm中具有String常量池缓存的功能。简单来说，就是我输一次A，如果String常量池没有A，那么这个A就会被保存在String常量池里。当我要用A时，这时就会把String常量池里的A指向变量。所有的A都是同一个。如果把A当作锁，那么便会出现相同的锁，就会出现问题。 7.锁对象的改变如果锁对象的值中途改变，那么锁也就会改变，马上会由同步变为异步。需要注意的是：只要对象不变，即使对象的属性被改变，运行的结果还是同步。比如对象是USER这个类，运行过程中，改变了USER里的一个属性name的值，但对象还是没变，还是会同步执行下去。]]></content>
