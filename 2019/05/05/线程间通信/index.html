@@ -105,7 +105,7 @@
 <meta property="og:description" content="1.使用wait/notify实现线程间的通信1.1 等待/通知机制的实现方法wait()的作用是使当前执行代码的线程进行等待。在调用wait()之前，线程必须获得该对象的对象级别锁，即只能在同步方法或同步代码块中调用wait()方法。在执行wait()方法后，当前线程释放锁。在从wait()返回前，线程与其他线程竞争重新获得锁。方法notify()也要在同步方法或同步代码块中调用。该方法用来通知">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ggboy996.github.io/2019/05/05/线程间通信/www.jpg">
-<meta property="og:updated_time" content="2019-05-05T10:36:20.925Z">
+<meta property="og:updated_time" content="2019-05-05T10:40:05.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线程间通信">
 <meta name="twitter:description" content="1.使用wait/notify实现线程间的通信1.1 等待/通知机制的实现方法wait()的作用是使当前执行代码的线程进行等待。在调用wait()之前，线程必须获得该对象的对象级别锁，即只能在同步方法或同步代码块中调用wait()方法。在执行wait()方法后，当前线程释放锁。在从wait()返回前，线程与其他线程竞争重新获得锁。方法notify()也要在同步方法或同步代码块中调用。该方法用来通知">
@@ -503,7 +503,7 @@
 <h1 id="3-方法join的使用"><a href="#3-方法join的使用" class="headerlink" title="3.方法join的使用"></a>3.方法join的使用</h1><p>方法join()的作用是使所属的线程对象X正常执行run()方法中的任务，而使当前线程Z进行无限期的阻塞，等待线程X销毁后再继续执行线程Z后面的代码。  </p>
 <h2 id="3-1-join与synchronized的区别"><a href="#3-1-join与synchronized的区别" class="headerlink" title="3.1 join与synchronized的区别"></a>3.1 join与synchronized的区别</h2><p>方法join具有使线程排队运行的作用，有些类似同步的运行效果。join与synchronized的区别是：join在内部使用wait()方法进行等待，而sychroized该关键字使用的是”对象监视器”原理做为同步。  </p>
 <h2 id="3-2-方法join-long-与sleep-long-的区别"><a href="#3-2-方法join-long-与sleep-long-的区别" class="headerlink" title="3.2 方法join(long)与sleep(long)的区别"></a>3.2 方法join(long)与sleep(long)的区别</h2><p>join(long)的功能在内部是使用wait(long)方法实现的，所以join(long)方法具有释放锁的特点。而Thread.sleep(long)方法却不释放锁。  </p>
-<h1 id="4-ThreadLocal的使用"><a href="#4-ThreadLocal的使用" class="headerlink" title="4.ThreadLocal的使用"></a>4.ThreadLocal的使用</h1><p>类ThreadLocal主要解决的就是每个线程绑定自己的值，可以将ThreadLocal类比喻成全局存放数据的盒子，盒子里可以存储每个线程的私有数据。</p>
+<h1 id="4-ThreadLocal的使用"><a href="#4-ThreadLocal的使用" class="headerlink" title="4.ThreadLocal的使用"></a>4.ThreadLocal的使用</h1><p><strong>ThreadLocal是一个本地线程副本变量工具类。主要用于将私有线程和该线程存放的副本对象做一个映射，各个线程之间的变量互不干扰，在高并发场景下，可以实现无状态的调用，特别适用于各个线程依赖不通的变量值完成操作的场景。</strong>  </p>
 <h2 id="4-1-ThreadLocal的内部结构图"><a href="#4-1-ThreadLocal的内部结构图" class="headerlink" title="4.1 ThreadLocal的内部结构图"></a>4.1 ThreadLocal的内部结构图</h2><p><img src="/2019/05/05/线程间通信/www.jpg" alt="www">  </p>
 <p>从上面的结构图，我们已经窥见ThreadLocal的核心机制：</p>
 <p><strong>每个Thread线程内部都有一个Map。</strong><br><strong>Map里面存储线程本地对象（key）和线程的变量副本（value）</strong><br><strong>但是，Thread内部的Map是由ThreadLocal维护的，由ThreadLocal负责向map获取和设置线程的变量值。</strong>  </p>
