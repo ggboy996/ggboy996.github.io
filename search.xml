@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[线程间通信]]></title>
+    <url>%2F2019%2F05%2F05%2F%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%2F</url>
+    <content type="text"><![CDATA[#1.使用wait/notify实现线程间的通信 ##1.1 等待/通知机制的实现 方法wait()的作用是使当前执行代码的线程进行等待。在调用wait()之前，线程必须获得该对象的对象级别锁，即只能在同步方法或同步代码块中调用wait()方法。在执行wait()方法后，当前线程释放锁。在从wait()返回前，线程与其他线程竞争重新获得锁。方法notify()也要在同步方法或同步代码块中调用。该方法用来通知那些可能等待该对象的对象锁的其他线程，如果有多个线程等待，则按优先级来获取，否则随机挑选一个呈wait状态的线程，对其发出通知notify，并使它进入就绪队列，也叫锁池。另外需要说明的是，在执行notify()方法之后，当前线程不会马上释放该对象锁，要等到执行notify()方法的线程将程序执行完，也就是推出synchronized代码块后，当前线程才会释放锁，然后由就绪队列里的线程争夺锁。当一个获得了该对象的wait()线程运行完毕后，会释放该对象锁，此时如果该对象没有再次使用notify语句，则即便该对象已经空闲，其他wait状态等待的线程由于没有得到该对象的通知，还会继续阻塞在wait状态，直到这个对象发出一个notify或notifyAll。 ##1.2 方法wait(long)的使用带一个参数的的wait(long)方法的功能是等待某一时间内是否有线程对锁唤醒，如果超过这个时间则自动唤醒。 ##1.3 等待wait的条件发生变化如果采用if判断，当线程从wait中唤醒时，那么将直接执行处理其他业务逻辑的代码，但这时候可能出现另外一种可能，条件谓词已经不满足处理业务逻辑的条件了，从而出现错误的结果，于是有必要进行再一次判断，所有一般wait()方法是在while循环里，这样便于检测wait的条件是否变化。 #2.生产者/消费者模式的实现 ##2.1 线程假死现象“假死”现象其实就是线程全部进入WAITING等待状态，这时，程序不再执行任何业务功能，整个项目呈停止状态。“假死”出现的原因是notify唤醒的时候，也许是异类，也许是同类，比如生产者唤醒生产者，或消费者唤醒消费者这样的情况。如果按这样运行的比率积少成多，最终就会导致所有的线程都不能继续运行下去，大家都在等待，都呈WAITING状态，就是”假死”。 #3.方法join的使用方法join()的作用是使所属的线程对象X正常执行run()方法中的任务，而使当前线程Z进行无限期的阻塞，等待线程X销毁后再继续执行线程Z后面的代码。 ##3.1 join与synchronized的区别方法join具有使线程排队运行的作用，有些类似同步的运行效果。join与synchronized的区别是：join在内部使用wait()方法进行等待，而sychroized该关键字使用的是”对象监视器”原理做为同步。 ##3.2 方法join(long)与sleep(long)的区别join(long)的功能在内部是使用wait(long)方法实现的，所以join(long)方法具有释放锁的特点。而Thread.sleep(long)方法却不释放锁。 #4.ThreadLocal的使用类ThreadLocal主要解决的就是每个线程绑定自己的值，可以将ThreadLocal类比喻成全局存放数据的盒子，盒子里可以存储每个线程的私有数据。 ##4.1 ThreadLocal与InheritableThreadLocal的区别ThreadLocal和InheritableThreadLocal本质上只是为了方便编码给的工具类，具体存数据是ThreadLocalMap 对象。ThreadLocalMap 存的key对象是ThreadLocal，value就是真正需要存的业务对象。Thread里通过两个变量持用ThreadLocalMap 对象，分别为：threadLocals和inheritableThreadLocals。InheritableThreadLocal之所以能够完成线程间变量的传递，是在new Thread()的时候对inheritableThreadLocals对像里的值进行了复制。子线程通过继承得到的InheritableThreadLocal里的值与父线程里的InheritableThreadLocal的值具有相同的引用，如果父子线程想实现不影响各自的对象，可以重写InheritableThreadLocal的childValue方法。]]></content>
+      <categories>
+        <category>Java</category>
+        <category>多线程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+        <tag>线程间通信</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[volatile关键字]]></title>
     <url>%2F2019%2F05%2F03%2Fvolatile%E5%85%B3%E9%94%AE%E5%AD%97%2F</url>
     <content type="text"><![CDATA[关键字volatile的主要作用是使变量在多个线程间可见。具体来说就是，volatile关键字，可以强制的从公共内存中读取变量的值，这样就不会因为私有堆栈中的值和公共堆栈中的值不同步而导致错误。 1.volatile 和 synchronized 的比较1) volatile只能修饰于变量，而 synchronized可以修饰方法，以及代码块。2) 多线程访问 volatile不会发生阻塞，而 synchronized会出现阻塞。3) volatile能保证数据的可见性，但不能保证原子性。 synchronized两者都可以保证。4) volatile解决的是变量在多个线程之间的可见性，而 synchronized解决的是多个线程之间访问资源的同步性。 2. i++操作时的非线程安全问题表达式i++的操作步骤分解如下： 1)从内存中取出i的值2)计算i的值3)将i的值写到内存中 假如在第二步计算值的时候，另外一个线程也修改i的值，这时候就会出现脏数据。解决方法就是使用 synchronized关键字。 3.synchronized有和volatile一样的功能synchronized不仅可以保证同步，还可以保证可见性。在Java内存模型中，synchronized规定，线程在加锁时，先清空工作内存→在主内存中拷贝最新变量的副本到工作内存→执行完代码→将更改后的共享变量的值刷新到主内存中→释放互斥锁。]]></content>
