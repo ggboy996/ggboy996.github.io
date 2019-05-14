@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,7 +70,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '7.1.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
@@ -96,17 +96,18 @@
 
 
 
-  <meta name="description" content="人生苦短，及时行乐">
+  <meta name="description" content="一、理解事务管理任何处理数据的系统都必须保护数据的完整性。   事务有四个特性：ACID   原子性（Atomicity）： 事务是一个原子操作，由一系列动作组成。事务的原子性确保动作要么全部完成，要么完全不起作用。一致性（Consistency）： 一旦事务完成（不管成功还是失败），系统必须确保它所建模的业务处于一致的状态，而不会是部分完成部分失败。在现实中的数据不应该被破坏。隔离性（Isola">
+<meta name="keywords" content="Spring,依赖注入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring事务管理">
 <meta property="og:url" content="http://ggboy996.github.io/2019/05/13/Spring事务管理/index.html">
 <meta property="og:site_name" content="ggboy">
-<meta property="og:description" content="人生苦短，及时行乐">
+<meta property="og:description" content="一、理解事务管理任何处理数据的系统都必须保护数据的完整性。   事务有四个特性：ACID   原子性（Atomicity）： 事务是一个原子操作，由一系列动作组成。事务的原子性确保动作要么全部完成，要么完全不起作用。一致性（Consistency）： 一旦事务完成（不管成功还是失败），系统必须确保它所建模的业务处于一致的状态，而不会是部分完成部分失败。在现实中的数据不应该被破坏。隔离性（Isola">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-13T10:18:15.245Z">
+<meta property="og:updated_time" content="2019-05-14T07:13:33.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring事务管理">
-<meta name="twitter:description" content="人生苦短，及时行乐">
+<meta name="twitter:description" content="一、理解事务管理任何处理数据的系统都必须保护数据的完整性。   事务有四个特性：ACID   原子性（Atomicity）： 事务是一个原子操作，由一系列动作组成。事务的原子性确保动作要么全部完成，要么完全不起作用。一致性（Consistency）： 一旦事务完成（不管成功还是失败），系统必须确保它所建模的业务处于一致的状态，而不会是部分完成部分失败。在现实中的数据不应该被破坏。隔离性（Isola">
 
 
 
@@ -440,6 +441,24 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -468,7 +487,40 @@
       
 
       
-        
+        <h1 id="一、理解事务管理"><a href="#一、理解事务管理" class="headerlink" title="一、理解事务管理"></a>一、理解事务管理</h1><p>任何处理数据的系统都必须保护数据的完整性。  </p>
+<p>事务有四个特性：ACID  </p>
+<p><strong>原子性（Atomicity）：</strong> 事务是一个原子操作，由一系列动作组成。事务的原子性确保动作要么全部完成，要么完全不起作用。<br><strong>一致性（Consistency）：</strong> 一旦事务完成（不管成功还是失败），系统必须确保它所建模的业务处于一致的状态，而不会是部分完成部分失败。在现实中的数据不应该被破坏。<br><strong>隔离性（Isolation）：</strong> 可能有许多事务会同时处理相同的数据，因此每个事务都应该与其他事务隔离开来，防止数据损坏。<br><strong>持久性（Durability）：</strong> 一旦事务完成，无论发生什么系统错误，它的结果都不应该受到影响，这样就能从任何系统崩溃中恢复过来。通常情况下，事务的结果被写到持久化存储器中。  </p>
+<h1 id="二、Spring的事务抽象模型"><a href="#二、Spring的事务抽象模型" class="headerlink" title="二、Spring的事务抽象模型"></a>二、Spring的事务抽象模型</h1><p>每种数据访问技术都有其事务机制。他们提供了不同的API来开始新事务，当数据操作完成后提交事务，或发生错误时回滚事务。Spring的事务抽象模型基于PlatformTransactionManager接口，并且存在不同的具体实现。  </p>
+<h2 id="1-使用xml的方式进行事务管理"><a href="#1-使用xml的方式进行事务管理" class="headerlink" title="1.使用xml的方式进行事务管理"></a>1.使用xml的方式进行事务管理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 注册配置事务管理器 --&gt;</span><br><span class="line">    &lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.orm.hibernate3.HibernateTransactionManager&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;sessionFactory&quot; ref=&quot;sessionFactory&quot; /&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line"> &lt;!-- 配置事务传播特性 --&gt;</span><br><span class="line">    &lt;tx:advice id=&quot;transactionAdvice&quot; transaction-manager=&quot;transactionManager&quot;&gt;</span><br><span class="line">        &lt;tx:attributes&gt;</span><br><span class="line">            &lt;tx:method name=&quot;save*&quot; propagation=&quot;REQUIRED&quot; /&gt;</span><br><span class="line">            &lt;tx:method name=&quot;delete*&quot; propagation=&quot;REQUIRED&quot; /&gt;</span><br><span class="line">            &lt;tx:method name=&quot;update*&quot; propagation=&quot;REQUIRED&quot; /&gt;</span><br><span class="line">            &lt;tx:method name=&quot;get*&quot; read-only=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;tx:method name=&quot;load*&quot; read-only=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;tx:method name=&quot;find*&quot; read-only=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;tx:method name=&quot;*&quot; read-only=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;/tx:attributes&gt;</span><br><span class="line">    &lt;/tx:advice&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 配置哪些类的哪些方法参与事务 --&gt;</span><br><span class="line">    &lt;aop:config&gt;</span><br><span class="line">        &lt;aop:advisor pointcut=&quot;execution(* com.sdjz.eshop.service.*..*.*(..))&quot; advice-ref=&quot;transactionAdvice&quot; /&gt;</span><br><span class="line">    &lt;/aop:config&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="2-使用注解的方式进行事务管理"><a href="#2-使用注解的方式进行事务管理" class="headerlink" title="2.使用注解的方式进行事务管理"></a>2.使用注解的方式进行事务管理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在spring配置文件中引入&lt;tx:&gt;命名空间</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line"> xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line"> xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;</span><br><span class="line"> xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</span><br><span class="line"> http://www.springframework.org/schema/beans/spring-beans-2.0.xsd</span><br><span class="line"> http://www.springframework.org/schema/tx</span><br><span class="line"> http://www.springframework.org/schema/tx/spring-tx-2.0.xsd&quot;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> &lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.orm.hibernate3.HibernateTransactionManager&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;sessionFactory&quot; ref=&quot;sessionFactory&quot; /&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 使用注解方式定义事务 --&gt;</span><br><span class="line">    &lt;tx:annotation-driven proxy-target-class=&quot;true&quot; transaction-manager=&quot;transactionManager&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<p>然后使用@Transactional来进行标记开启事务。  </p>
+<h1 id="三、事务的传播行为和隔离级别"><a href="#三、事务的传播行为和隔离级别" class="headerlink" title="三、事务的传播行为和隔离级别"></a>三、事务的传播行为和隔离级别</h1><p>当类中某些方法不需要事物时:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Transactional</span><br><span class="line">public class TestServiceBean implements TestService &#123;   </span><br><span class="line">    private TestDao dao;   </span><br><span class="line">    public void setDao(TestDao dao) &#123;</span><br><span class="line">        this.dao = dao;</span><br><span class="line">    &#125;   </span><br><span class="line">    @Transactional(propagation = Propagation.NOT_SUPPORTED)</span><br><span class="line">    public List&lt;Object&gt; getAll() &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中的<code>@Transactional(propagation = Propagation.NOT_SUPPORTED)</code>便是传播行为的实现。  </p>
+<p>事物传播行为介绍:   </p>
+<p>@Transactional(propagation=Propagation.REQUIRED)<br>如果有事务, 那么加入事务, 没有的话新建一个(默认情况下)  </p>
+<p>@Transactional(propagation=Propagation.NOT_SUPPORTED)<br>容器不为这个方法开启事务  </p>
+<p>@Transactional(propagation=Propagation.REQUIRES_NEW)<br>不管是否存在事务,都创建一个新的事务,原来的挂起,新的执行完毕,继续执行老的事务  </p>
+<p>@Transactional(propagation=Propagation.MANDATORY)<br>必须在一个已有的事务中执行,否则抛出异常  </p>
+<p>@Transactional(propagation=Propagation.NEVER)<br>必须在一个没有的事务中执行,否则抛出异常(与Propagation.MANDATORY相反)  </p>
+<p>@Transactional(propagation=Propagation.SUPPORTS)<br>如果其他bean调用这个方法,在其他bean中声明事务,那就用事务.如果其他bean没有声明事务,那就不用事务。  </p>
+<p>事物超时设置:<br>@Transactional(timeout=30) //默认是30秒  </p>
+<p>事务隔离级别:  </p>
+<p>@Transactional(isolation = Isolation.READ_UNCOMMITTED)<br>读取未提交数据(会出现脏读, 不可重复读) 基本不使用  </p>
+<p>@Transactional(isolation = Isolation.READ_COMMITTED)<br>读取已提交数据(会出现不可重复读和幻读)  </p>
+<p>@Transactional(isolation = Isolation.REPEATABLE_READ)<br>可重复读(会出现幻读)  </p>
+<p>@Transactional(isolation = Isolation.SERIALIZABLE)<br>串行化  </p>
+<p>脏读 : 一个事务读取到另一事务未提交的更新数据  </p>
+<p>不可重复读 : 在同一事务中, 多次读取同一数据返回的结果有所不同, 换句话说, 后续读取可以读到另一事务已提交的更新数据. 相反, “可重复读”在同一事务中多次。读取数据时, 能够保证所读数据一样, 也就是后续读取不能读到另一事务已提交的更新数据。  </p>
+<p>幻读 : 一个事务读到另一个事务已提交的insert数据。  </p>
+<p>注意的几点:  </p>
+<p>1、@Transactional 只能被应用到public方法上, 对于其它非public的方法,如果标记了@Transactional也不会报错,但方法没有事务功能.  </p>
+<p>2、用 spring 事务管理器,由spring来负责数据库的打开,提交,回滚.默认遇到运行期例外(throw new RuntimeException(“注释”);)会回滚，即遇到不受检查（unchecked）的例外时回滚；而遇到需要捕获的例外(throw new Exception(“注释”);)不会回滚,即遇到受检查的例外（就是非运行时抛出的异常，编译器会检查到的异常叫受检查例外或说受检查异常）时，需我们指定方式来让事务回滚 要想所有异常都回滚,要加上 @Transactional( rollbackFor={Exception.class,其它异常}) .如果让unchecked例外不回滚： @Transactional(notRollbackFor=RunTimeException.class)<br>如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Transactional(rollbackFor=Exception.class) //指定回滚,遇到异常Exception时回滚</span><br><span class="line">public void methodName() &#123;</span><br><span class="line">throw new Exception(&quot;注释&quot;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">@Transactional(noRollbackFor=Exception.class)//指定不回滚,遇到运行期例外(throw new RuntimeException(&quot;注释&quot;);)会回滚</span><br><span class="line">public ItimDaoImpl getItemDaoImpl() &#123;</span><br><span class="line">throw new RuntimeException(&quot;注释&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3、@Transactional 注解应该只被应用到 public 可见度的方法上。 如果你在 protected、private 或者 package-visible 的方法上使用 @Transactional 注解，它也不会报错， 但是这个被注解的方法将不会展示已配置的事务设置。  </p>
+<p>4、@Transactional 注解可以被应用于接口定义和接口方法、类定义和类的 public 方法上。然而，请注意仅仅 @Transactional 注解的出现不足于开启事务行为，它仅仅 是一种元数据，能够被可以识别 @Transactional 注解和上述的配置适当的具有事务行为的beans所使用。上面的例子中，其实正是 <a href="tx:annotation-driven/" target="_blank" rel="noopener">tx:annotation-driven/</a>元素的出现开启了事务行为。  </p>
+<p>5、Spring团队的建议是你在具体的类（或类的方法）上使用 @Transactional 注解，而不要使用在类所要实现的任何接口上。你当然可以在接口上使用 @Transactional 注解，但是这将只能当你设置了基于接口的代理时它才生效。因为注解是 不能继承 的，这就意味着如果你正在使用基于类的代理时，那么事务的设置将不能被基于类的代理所识别，而且对象也将不会被事务代理所包装（将被确认为严重的）。因 此，请接受Spring团队的建议并且在具体的类上使用 @Transactional 注解。</p>
+
       
     </div>
 
@@ -488,6 +540,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/tags/依赖注入/" rel="tag"># 依赖注入</a>
+          
+        </div>
       
 
       
@@ -555,8 +615,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -743,6 +812,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、理解事务管理"><span class="nav-number">1.</span> <span class="nav-text">一、理解事务管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、Spring的事务抽象模型"><span class="nav-number">2.</span> <span class="nav-text">二、Spring的事务抽象模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用xml的方式进行事务管理"><span class="nav-number">2.1.</span> <span class="nav-text">1.使用xml的方式进行事务管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用注解的方式进行事务管理"><span class="nav-number">2.2.</span> <span class="nav-text">2.使用注解的方式进行事务管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、事务的传播行为和隔离级别"><span class="nav-number">3.</span> <span class="nav-text">三、事务的传播行为和隔离级别</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -870,7 +956,6 @@
   <script src="/js/affix.js?v=7.1.0"></script>
 
   <script src="/js/schemes/pisces.js?v=7.1.0"></script>
-
 
 
 
