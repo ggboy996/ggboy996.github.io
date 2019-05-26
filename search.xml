@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[List接口]]></title>
+    <url>%2F2019%2F05%2F26%2FList%E6%8E%A5%E5%8F%A3%2F</url>
+    <content type="text"><![CDATA[List接口继承自Collection接口。在List集合中允许出现重复的元素，所有的元素是以一种线性的元素存储的。 ArrayList集合ArrayList是 List 接口的一个实现类。可以将 ArrayList集合看作是一个长度可变的数组。 由于 ArrayList集合的底层是使用一个数组来保存元素，在增加和删除元素时，会导致创建新的数组，效率比较低，所有不适合做大量的增删操作。 但这种数组的结构允许程序通过索引的方式来访问元素，因此使用ArrayList集合查找元素很方便。 LinkedList集合LinkedList集合内部维护了一个双向循环链表。 链表中的每一个元素都使用引用的方式来记住它的前一个和后一个元素，从而可以将所有的元素连接起来。 所以LinkedList集合对于元素的增删操作具有很高的效率。 Vector集合在书上是这样描述 Vector集合的：用法和 ArrayList 完全一样，区别在于 Vector集合是线程安全的，而 ArrayList集合是线程不安全的。 所以我去搜了下 Vector集合是如何实现线程安全的。然后发现 Vector集合并不是绝对的线程安全，至少在进行复合操作时，并不是线程安全的。 举个栗子： 123456789101112131415161718192021222324252627282930public class App &#123; public static void main(String[] args) &#123; // ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); Vector&lt;String&gt; list = new Vector&lt;&gt;(); list.add(&quot;1&quot;); list.add(&quot;2&quot;); new Thread(new Runnable() &#123; public void run() &#123; //集合大小 int len = list.size(); try &#123; //睡5s Thread.sleep(5000); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; //删除最后一个 list.remove(len-1); &#125; &#125;, &quot;t1&quot;).start(); new Thread(new Runnable() &#123; public void run() &#123; //清空集合 list.clear(); &#125; &#125;, &quot;t2&quot;).start(); &#125;&#125; 运行报错，分析原因： 线程t1先执行,获取到的list的size为2, 暂停5s, 线程t2开始执行, 清空list集合, 线程t1休眠时间结束,此时再删除就出现数组越界.因为数据已清空. 线程t1执行list.size()方法,此时线程t1持有list对象锁.其他线程等待. 线程t1执行完list.size方法之后会释放list对象锁. 之后进入休眠. 线程t2获取list对象锁后, 遍可以操作list, 而一旦线程t2操作了list对象, 那数组越界问题就出现了. 所以说, list.size 跟 list.remove 这2个方法单独操作时,是线程安全的。一旦同时操作,那vector就不是大家所认为的线程安全操作了. 解决方法，可以尝试加锁： 123456public void deleteLast() &#123; synchronized (v) &#123; int index = v.size() - 1; v.remove(index); &#125;&#125; 如上，对v进行加锁，即可保证同一时刻，不会有其他线程删除掉v中的元素。 总结：中的所有自带方法都是线程安全的，因为方法都使用synchronized关键字标注。但是，对这些集合类的复合操作无法保证其线程安全性。需要客户端通过主动加锁来保证。]]></content>
+      <categories>
+        <category>集合类</category>
+        <category>List接口</category>
+      </categories>
+      <tags>
+        <tag>ArrayList集合</tag>
+        <tag>LinkedList集合</tag>
+        <tag>Vector集合</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[AspectJ注解]]></title>
     <url>%2F2019%2F05%2F14%2FAspectJ%E6%B3%A8%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[AspectJ 支持 5 种类型的通知注解:@Before: 前置通知, 在方法执行之前执行 @After: 后置通知, 在方法执行之后执行 @AfterRunning: 返回通知, 在方法返回结果之后执行 @AfterThrowing: 异常通知, 在方法抛出异常之后 @Around: 环绕通知, 围绕着方法执行 有篇博文将这5个通知方法的使用做了具体的代码实现，我就不一一解释了。具体请看这篇文章，解释的非常清楚：https://blog.csdn.net/qq_22899021/article/details/82496508]]></content>

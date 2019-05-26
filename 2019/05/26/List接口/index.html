@@ -96,22 +96,18 @@
 
 
 
-  <meta name="description" content="1.Spring IoC容器在这里，我们先不具体深入的了解Spring IoC容器，只需要知道它是做什么的。Spring的核心就是IoC容器，它的作用是可以在对象生成或初始化时直接将数据注入到对象中，也可以通过将对象引用注入到对象数据域中的方式来注入对方法调用的依赖。也就是实现了所谓的依赖控制反转。Bean的实例化、初始化和装配都是由Spring容器来管理   1.1 配置元数据首先，我们需要向S">
-<meta name="keywords" content="Spring,IOC">
+  <meta name="description" content="List接口继承自Collection接口。在List集合中允许出现重复的元素，所有的元素是以一种线性的元素存储的。 ArrayList集合ArrayList是 List 接口的一个实现类。可以将 ArrayList集合看作是一个长度可变的数组。   由于 ArrayList集合的底层是使用一个数组来保存元素，在增加和删除元素时，会导致创建新的数组，效率比较低，所有不适合做大量的增删操作。   但">
+<meta name="keywords" content="ArrayList集合,LinkedList集合,Vector集合">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用spring进行依赖注入">
-<meta property="og:url" content="http://ggboy996.github.io/2019/05/13/使用spring进行依赖注入/index.html">
+<meta property="og:title" content="List接口">
+<meta property="og:url" content="http://ggboy996.github.io/2019/05/26/List接口/index.html">
 <meta property="og:site_name" content="ggboy">
-<meta property="og:description" content="1.Spring IoC容器在这里，我们先不具体深入的了解Spring IoC容器，只需要知道它是做什么的。Spring的核心就是IoC容器，它的作用是可以在对象生成或初始化时直接将数据注入到对象中，也可以通过将对象引用注入到对象数据域中的方式来注入对方法调用的依赖。也就是实现了所谓的依赖控制反转。Bean的实例化、初始化和装配都是由Spring容器来管理   1.1 配置元数据首先，我们需要向S">
+<meta property="og:description" content="List接口继承自Collection接口。在List集合中允许出现重复的元素，所有的元素是以一种线性的元素存储的。 ArrayList集合ArrayList是 List 接口的一个实现类。可以将 ArrayList集合看作是一个长度可变的数组。   由于 ArrayList集合的底层是使用一个数组来保存元素，在增加和删除元素时，会导致创建新的数组，效率比较低，所有不适合做大量的增删操作。   但">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ggboy996.github.io/2019/05/13/使用spring进行依赖注入/1.png">
-<meta property="og:image" content="http://ggboy996.github.io/2019/05/13/使用spring进行依赖注入/2.png">
-<meta property="og:image" content="http://ggboy996.github.io/2019/05/13/使用spring进行依赖注入/3.png">
-<meta property="og:updated_time" content="2019-05-14T11:30:09.062Z">
+<meta property="og:updated_time" content="2019-05-26T12:32:15.310Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用spring进行依赖注入">
-<meta name="twitter:description" content="1.Spring IoC容器在这里，我们先不具体深入的了解Spring IoC容器，只需要知道它是做什么的。Spring的核心就是IoC容器，它的作用是可以在对象生成或初始化时直接将数据注入到对象中，也可以通过将对象引用注入到对象数据域中的方式来注入对方法调用的依赖。也就是实现了所谓的依赖控制反转。Bean的实例化、初始化和装配都是由Spring容器来管理   1.1 配置元数据首先，我们需要向S">
-<meta name="twitter:image" content="http://ggboy996.github.io/2019/05/13/使用spring进行依赖注入/1.png">
+<meta name="twitter:title" content="List接口">
+<meta name="twitter:description" content="List接口继承自Collection接口。在List集合中允许出现重复的元素，所有的元素是以一种线性的元素存储的。 ArrayList集合ArrayList是 List 接口的一个实现类。可以将 ArrayList集合看作是一个长度可变的数组。   由于 ArrayList集合的底层是使用一个数组来保存元素，在增加和删除元素时，会导致创建新的数组，效率比较低，所有不适合做大量的增删操作。   但">
 
 
 
@@ -119,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://ggboy996.github.io/2019/05/13/使用spring进行依赖注入/">
+  <link rel="canonical" href="http://ggboy996.github.io/2019/05/26/List接口/">
 
 
 
@@ -129,7 +125,7 @@
   };
 </script>
 
-  <title>使用spring进行依赖注入 | ggboy</title>
+  <title>List接口 | ggboy</title>
   
 
 
@@ -395,7 +391,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ggboy996.github.io/2019/05/13/使用spring进行依赖注入/">
+    <link itemprop="mainEntityOfPage" href="http://ggboy996.github.io/2019/05/26/List接口/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="我爱死喷乱涂">
@@ -412,7 +408,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用spring进行依赖注入
+          <h1 class="post-title" itemprop="name headline">List接口
 
               
             
@@ -438,7 +434,7 @@
                 
               
 
-              <time title="创建时间：2019-05-13 08:56:20" itemprop="dateCreated datePublished" datetime="2019-05-13T08:56:20+08:00">2019-05-13</time>
+              <time title="创建时间：2019-05-26 19:53:02" itemprop="dateCreated datePublished" datetime="2019-05-26T19:53:02+08:00">2019-05-26</time>
             
 
             
@@ -456,7 +452,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/集合类/" itemprop="url" rel="index"><span itemprop="name">集合类</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/集合类/List接口/" itemprop="url" rel="index"><span itemprop="name">List接口</span></a></span>
 
                 
                 
@@ -491,30 +494,24 @@
       
 
       
-        <h1 id="1-Spring-IoC容器"><a href="#1-Spring-IoC容器" class="headerlink" title="1.Spring IoC容器"></a>1.Spring IoC容器</h1><p>在这里，我们先不具体深入的了解Spring IoC容器，只需要知道它是做什么的。<strong>Spring的核心就是IoC容器，它的作用是可以在对象生成或初始化时直接将数据注入到对象中，也可以通过将对象引用注入到对象数据域中的方式来注入对方法调用的依赖。也就是实现了所谓的依赖控制反转。Bean的实例化、初始化和装配都是由Spring容器来管理</strong>  </p>
-<h2 id="1-1-配置元数据"><a href="#1-1-配置元数据" class="headerlink" title="1.1 配置元数据"></a>1.1 配置元数据</h2><p>首先，我们需要向Spring容器提供相关信息，以便于实例化Bean并指定如何对这些Bean进行装配。所提供的信息被称为<strong>配置元数据</strong>。  </p>
-<p>有三种方式来配置元数据，一是XML配置，二是基于java配置，三是基于java注解的配置，三者的区别：  </p>
-<p><img src="/2019/05/13/使用spring进行依赖注入/1.png" alt="1"><br><img src="/2019/05/13/使用spring进行依赖注入/2.png" alt="2"><br><img src="/2019/05/13/使用spring进行依赖注入/3.png" alt="3"></p>
-<p><strong>具体说一下，java配置和java注解配置的不同：</strong>  </p>
-<p>Java注解配置:需要在Serivce层，DAO层的时候，需要在类上进行注解，就可获得spring的依赖注入  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package di;</span><br><span class="line"> </span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line">//注解配置</span><br><span class="line">@Service </span><br><span class="line">public class UseFunctionService &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    FunctionService functionService;</span><br><span class="line"> </span><br><span class="line">    public String sayHello(String word) &#123;</span><br><span class="line">        return functionService.toHello(word);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Java配置:不需要在类上写注解了，直接在配置类里面进行申明即可  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">package javaconfig;</span><br><span class="line"> </span><br><span class="line">import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line"> </span><br><span class="line">@Configuration</span><br><span class="line">public class JavaConfig &#123;</span><br><span class="line">    //通过这种方式，获得spring的依赖注入</span><br><span class="line">    @Bean</span><br><span class="line">    public UseFunctionService useFunctionService () &#123;</span><br><span class="line">        return new UseFunctionService ();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package di;</span><br><span class="line"> </span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line">public class UseFunctionService &#123;</span><br><span class="line"></span><br><span class="line">    FunctionService functionService = new FunctionService();</span><br><span class="line">	</span><br><span class="line">	public void setFunctionService(FunctionService functionService) &#123;</span><br><span class="line">		this.functionService = functionService;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    public String sayHello(String word) &#123;</span><br><span class="line">        return functionService.toHello(word);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="2-依赖注入"><a href="#2-依赖注入" class="headerlink" title="2.依赖注入"></a>2.依赖注入</h1><p>依赖注入有两种方法：<strong>Setter注入</strong>和<strong>构造函数注入</strong>。  </p>
-<h2 id="2-1-Setter注入"><a href="#2-1-Setter注入" class="headerlink" title="2.1 Setter注入"></a>2.1 Setter注入</h2><p>Setter注入是在Bean实例创建完毕之后执行。通过调用与Bean的配置元数据中定义的所有属性相对应的Setter方法注入这些属性。  </p>
-<p>具体实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//xml配置中</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;selfIntroductionService&quot; class=&quot;com.lanhuigu.spring.setter.SelfIntroductionServiceImpl&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;helloService&quot; ref=&quot;helloService&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package com.lanhuigu.spring.setter;</span><br><span class="line"> </span><br><span class="line">import com.lanhuigu.spring.common.HelloService;</span><br><span class="line"> </span><br><span class="line">public class SelfIntroductionServiceImpl implements SelfIntroductionService &#123;</span><br><span class="line">    private HelloService helloService;</span><br><span class="line"> </span><br><span class="line">    // setter方式注入Bean</span><br><span class="line">    public void setHelloService(HelloService helloService) &#123;</span><br><span class="line">        this.helloService = helloService;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    @Override</span><br><span class="line">    public void selfIntroduction() &#123;</span><br><span class="line">        // 向大家打招呼</span><br><span class="line">        helloService.sayHello(&quot;大家好!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-2-构造函数注入"><a href="#2-2-构造函数注入" class="headerlink" title="2.2 构造函数注入"></a>2.2 构造函数注入</h2><p>构造函数注入在组建创建期间被执行。依赖项被表示为构造函数的参数，容器通过检查Bean定义中指定的构造函数参数来确定调用哪个构造函数。  </p>
-<p>具体实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//xml配置</span><br><span class="line">...</span><br><span class="line">&lt;bean id=&quot;accountService&quot; class=&quot;com.wiley.beginningspring.ch2.AccountServiceImpl&quot;&gt;</span><br><span class="line">&lt;constructor-arg ref=&quot;accountDao&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;accountDao&quot; class=&quot;com.wiley.beginningspring.ch2.AccountDaoInMemroyImpl&quot;&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class AccountServiceImpl implements AccountService&#123;</span><br><span class="line">   private AccountDao accountDao;</span><br><span class="line"></span><br><span class="line">   public AccountServiceImpl(AccountDao accountDao)&#123;</span><br><span class="line">       this.accountDao = accountDao;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-3-循环依赖"><a href="#2-3-循环依赖" class="headerlink" title="2.3 循环依赖"></a>2.3 循环依赖</h2><p>构造函数注入有一个缺点，就是无法处理循环依赖。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class A&#123;</span><br><span class="line">   private B b;</span><br><span class="line">   </span><br><span class="line">   public A(B b)&#123;</span><br><span class="line">   this.b = b;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class B&#123;</span><br><span class="line">   private A a</span><br><span class="line">   </span><br><span class="line">   public B(A a)&#123;</span><br><span class="line">   this.a = a;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;a&quot; class=&quot;com.wiley.beginningspring.ch2.A&quot;&gt;</span><br><span class="line">    &lt;constructor-arg ref=&quot;b&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;b&quot; class=&quot;com.wiley.beginningspring.ch2.B&quot;&gt;</span><br><span class="line">    &lt;constructor-arg ref=&quot;a&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
-<p>如上就是形成了循环依赖。构造函数注入的方法是无法处理的，但Setter注入的方法能够处理此类循环，但还是不建议在配置中使用循环依赖。  </p>
-<h2 id="2-4-依赖解析过程"><a href="#2-4-依赖解析过程" class="headerlink" title="2.4 依赖解析过程"></a>2.4 依赖解析过程</h2><p>Spring容器的启动过程大致可分为两个主要阶段。在第一个阶段，容器处理配置元数据并建立元数据中存在的Bean定义，并对这些Bean进行验证。在该步骤中，Bean并没有被创建，相关的属性也没有被注入。在第二个阶段，首先完成Bean的创建，然后完成依赖注入。但实际上，并不是所有的Bean都被创建，在容器启动期间，仅创建了无状态作用域的Bean。  </p>
-<p>一个Bean在被完全创建且自己的依赖项被注入之前是不会作为一个依赖项被注入到其他Bean中去的。因此，必须确保被注入某一Bean中的Bean依赖项被完全配置且在目标Bean中使用。唯一的例外就是循环依赖，可以通过Setter方法来处理循环依赖，但存在缺陷，最好不要这样。  </p>
+        <p>List接口继承自Collection接口。在List集合中允许出现重复的元素，所有的元素是以一种线性的元素存储的。</p>
+<h1 id="ArrayList集合"><a href="#ArrayList集合" class="headerlink" title="ArrayList集合"></a>ArrayList集合</h1><p>ArrayList是 List 接口的一个实现类。可以将 ArrayList集合看作是一个长度可变的数组。  </p>
+<p>由于 ArrayList集合的底层是使用一个数组来保存元素，在增加和删除元素时，会导致创建新的数组，效率比较低，所有不适合做大量的增删操作。  </p>
+<p>但这种数组的结构允许程序通过索引的方式来访问元素，因此使用ArrayList集合查找元素很方便。</p>
+<h1 id="LinkedList集合"><a href="#LinkedList集合" class="headerlink" title="LinkedList集合"></a>LinkedList集合</h1><p>LinkedList集合内部维护了一个双向循环链表。  </p>
+<p>链表中的每一个元素都使用引用的方式来记住它的前一个和后一个元素，从而可以将所有的元素连接起来。  </p>
+<p>所以LinkedList集合对于元素的增删操作具有很高的效率。  </p>
+<h1 id="Vector集合"><a href="#Vector集合" class="headerlink" title="Vector集合"></a>Vector集合</h1><p>在书上是这样描述 Vector集合的：用法和 ArrayList 完全一样，区别在于 Vector集合是线程安全的，而 ArrayList集合是线程不安全的。  </p>
+<p>所以我去搜了下 Vector集合是如何实现线程安全的。然后发现 Vector集合并不是绝对的线程安全，至少在进行复合操作时，并不是线程安全的。  </p>
+<p>举个栗子：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public class App &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">       // ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">        Vector&lt;String&gt; list = new Vector&lt;&gt;();</span><br><span class="line">        list.add(&quot;1&quot;);</span><br><span class="line">        list.add(&quot;2&quot;);</span><br><span class="line"></span><br><span class="line">        new Thread(new Runnable() &#123;</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                //集合大小</span><br><span class="line">                int len = list.size();</span><br><span class="line">                try &#123;</span><br><span class="line">                    //睡5s</span><br><span class="line">                    Thread.sleep(5000);</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                //删除最后一个</span><br><span class="line">                list.remove(len-1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, &quot;t1&quot;).start();</span><br><span class="line"></span><br><span class="line">        new Thread(new Runnable() &#123;</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                //清空集合</span><br><span class="line">                list.clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, &quot;t2&quot;).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行报错，分析原因：  </p>
+<p>线程t1先执行,获取到的list的size为2, 暂停5s, 线程t2开始执行, 清空list集合, 线程t1休眠时间结束,此时再删除就出现数组越界.因为数据已清空.  </p>
+<p>线程t1执行list.size()方法,此时线程t1持有list对象锁.其他线程等待. 线程t1执行完list.size方法之后会释放list对象锁. 之后进入休眠. 线程t2获取list对象锁后, 遍可以操作list, 而一旦线程t2操作了list对象, 那数组越界问题就出现了. 所以说, list.size 跟 list.remove 这2个方法单独操作时,是线程安全的。一旦同时操作,那vector就不是大家所认为的线程安全操作了.  </p>
+<p>解决方法，可以尝试加锁：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void deleteLast() &#123;</span><br><span class="line">    synchronized (v) &#123;</span><br><span class="line">        int index = v.size() - 1;</span><br><span class="line">        v.remove(index);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如上，对v进行加锁，即可保证同一时刻，不会有其他线程删除掉v中的元素。  </p>
+<p><em>总结：中的所有自带方法都是线程安全的，因为方法都使用synchronized关键字标注。但是，对这些集合类的复合操作无法保证其线程安全性。需要客户端通过主动加锁来保证。</em></p>
 
       
     </div>
@@ -538,9 +535,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Spring/" rel="tag"># Spring</a>
+            <a href="/tags/ArrayList集合/" rel="tag"># ArrayList集合</a>
           
-            <a href="/tags/IOC/" rel="tag"># IOC</a>
+            <a href="/tags/LinkedList集合/" rel="tag"># LinkedList集合</a>
+          
+            <a href="/tags/Vector集合/" rel="tag"># Vector集合</a>
           
         </div>
       
@@ -553,8 +552,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/06/单例模式详解/" rel="next" title="单例模式详解">
-                <i class="fa fa-chevron-left"></i> 单例模式详解
+              <a href="/2019/05/14/AspectJ注解/" rel="next" title="AspectJ注解">
+                <i class="fa fa-chevron-left"></i> AspectJ注解
               </a>
             
           </div>
@@ -562,10 +561,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/13/Spring管理的Bean/" rel="prev" title="Spring管理的Bean">
-                Spring管理的Bean <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -841,7 +836,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Spring-IoC容器"><span class="nav-number">1.</span> <span class="nav-text">1.Spring IoC容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-配置元数据"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 配置元数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-依赖注入"><span class="nav-number">2.</span> <span class="nav-text">2.依赖注入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Setter注入"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Setter注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-构造函数注入"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 构造函数注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-循环依赖"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 循环依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-依赖解析过程"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 依赖解析过程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ArrayList集合"><span class="nav-number">1.</span> <span class="nav-text">ArrayList集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LinkedList集合"><span class="nav-number">2.</span> <span class="nav-text">LinkedList集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vector集合"><span class="nav-number">3.</span> <span class="nav-text">Vector集合</span></a></li></ol></div>
             
 
           </div>
@@ -1002,7 +997,7 @@
   
     <script>
   window.livereOptions = {
-    refer: '2019/05/13/使用spring进行依赖注入/'
+    refer: '2019/05/26/List接口/'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
