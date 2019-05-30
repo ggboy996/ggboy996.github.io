@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="关键字volatile的主要作用是使变量在多个线程间可见。具体来说就是，volatile关键字，可以强制的从公共内存中读取变量的值，这样就不会因为私有堆栈中的值和公共堆栈中的值不同步而导致错误。 1.volatile 和 synchronized 的比较1) volatile只能修饰于变量，而 synchronized可以修饰方法，以及代码块。2) 多线程访问 volatile不会发生阻塞，而 s">
-<meta name="keywords" content="Java,多线程,volatile关键字">
+  <meta name="description" content="一、重载在一个程序中，可以定义多个名称相同的方法，但是参数的类型或个数必须不同。 二、重写子类在继承父类方法的时候，有时候需要对父类的方法进行一些修改，这就是重写。需要相同的方法名，参数列表和返回值类型。子类在重写父类方法时，不能比父类的方法权限更严格，比如父类方法是Public，子类方法就不能是private。在子类中，用super关键字访问父类的成员。(super.成员变量，super.成员方">
+<meta name="keywords" content="Java基础概念">
 <meta property="og:type" content="article">
-<meta property="og:title" content="volatile关键字">
-<meta property="og:url" content="http://ggboy996.github.io/2019/05/03/volatile关键字/index.html">
+<meta property="og:title" content="Java基础概念">
+<meta property="og:url" content="http://ggboy996.github.io/2019/05/29/Java基础概念/index.html">
 <meta property="og:site_name" content="ggboy">
-<meta property="og:description" content="关键字volatile的主要作用是使变量在多个线程间可见。具体来说就是，volatile关键字，可以强制的从公共内存中读取变量的值，这样就不会因为私有堆栈中的值和公共堆栈中的值不同步而导致错误。 1.volatile 和 synchronized 的比较1) volatile只能修饰于变量，而 synchronized可以修饰方法，以及代码块。2) 多线程访问 volatile不会发生阻塞，而 s">
+<meta property="og:description" content="一、重载在一个程序中，可以定义多个名称相同的方法，但是参数的类型或个数必须不同。 二、重写子类在继承父类方法的时候，有时候需要对父类的方法进行一些修改，这就是重写。需要相同的方法名，参数列表和返回值类型。子类在重写父类方法时，不能比父类的方法权限更严格，比如父类方法是Public，子类方法就不能是private。在子类中，用super关键字访问父类的成员。(super.成员变量，super.成员方">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-14T11:03:43.018Z">
+<meta property="og:updated_time" content="2019-05-30T10:10:15.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="volatile关键字">
-<meta name="twitter:description" content="关键字volatile的主要作用是使变量在多个线程间可见。具体来说就是，volatile关键字，可以强制的从公共内存中读取变量的值，这样就不会因为私有堆栈中的值和公共堆栈中的值不同步而导致错误。 1.volatile 和 synchronized 的比较1) volatile只能修饰于变量，而 synchronized可以修饰方法，以及代码块。2) 多线程访问 volatile不会发生阻塞，而 s">
+<meta name="twitter:title" content="Java基础概念">
+<meta name="twitter:description" content="一、重载在一个程序中，可以定义多个名称相同的方法，但是参数的类型或个数必须不同。 二、重写子类在继承父类方法的时候，有时候需要对父类的方法进行一些修改，这就是重写。需要相同的方法名，参数列表和返回值类型。子类在重写父类方法时，不能比父类的方法权限更严格，比如父类方法是Public，子类方法就不能是private。在子类中，用super关键字访问父类的成员。(super.成员变量，super.成员方">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://ggboy996.github.io/2019/05/03/volatile关键字/">
+  <link rel="canonical" href="http://ggboy996.github.io/2019/05/29/Java基础概念/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>volatile关键字 | ggboy</title>
+  <title>Java基础概念 | ggboy</title>
   
 
 
@@ -391,7 +391,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ggboy996.github.io/2019/05/03/volatile关键字/">
+    <link itemprop="mainEntityOfPage" href="http://ggboy996.github.io/2019/05/29/Java基础概念/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="我爱死喷乱涂">
@@ -408,7 +408,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">volatile关键字
+          <h1 class="post-title" itemprop="name headline">Java基础概念
 
               
             
@@ -434,7 +434,7 @@
                 
               
 
-              <time title="创建时间：2019-05-03 12:07:54" itemprop="dateCreated datePublished" datetime="2019-05-03T12:07:54+08:00">2019-05-03</time>
+              <time title="创建时间：2019-05-29 15:32:13" itemprop="dateCreated datePublished" datetime="2019-05-29T15:32:13+08:00">2019-05-29</time>
             
 
             
@@ -452,14 +452,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/多线程/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试/Java基础概念/" itemprop="url" rel="index"><span itemprop="name">Java基础概念</span></a></span>
 
                 
                 
@@ -494,12 +494,57 @@
       
 
       
-        <p><strong>关键字volatile的主要作用是使变量在多个线程间可见。具体来说就是，volatile关键字，可以强制的从公共内存中读取变量的值，这样就不会因为私有堆栈中的值和公共堆栈中的值不同步而导致错误。</strong></p>
-<h1 id="1-volatile-和-synchronized-的比较"><a href="#1-volatile-和-synchronized-的比较" class="headerlink" title="1.volatile 和 synchronized 的比较"></a>1.volatile 和 synchronized 的比较</h1><p>1) volatile只能修饰于变量，而 synchronized可以修饰方法，以及代码块。<br>2) 多线程访问 volatile不会发生阻塞，而 synchronized会出现阻塞。<br>3) volatile能保证数据的可见性，但不能保证原子性。 synchronized两者都可以保证。<br>4) volatile解决的是变量在多个线程之间的可见性，而 synchronized解决的是多个线程之间访问资源的同步性。</p>
-<h1 id="2-i-操作时的非线程安全问题"><a href="#2-i-操作时的非线程安全问题" class="headerlink" title="2. i++操作时的非线程安全问题"></a>2. i++操作时的非线程安全问题</h1><p>表达式i++的操作步骤分解如下：  </p>
-<p>1)从内存中取出i的值<br>2)计算i的值<br>3)将i的值写到内存中  </p>
-<p>假如在第二步计算值的时候，另外一个线程也修改i的值，这时候就会出现脏数据。解决方法就是使用 synchronized关键字。</p>
-<h1 id="3-synchronized有和volatile一样的功能"><a href="#3-synchronized有和volatile一样的功能" class="headerlink" title="3.synchronized有和volatile一样的功能"></a>3.synchronized有和volatile一样的功能</h1><p>synchronized不仅可以保证同步，还可以保证可见性。<br>在Java内存模型中，synchronized规定，线程在加锁时，先清空工作内存→在主内存中拷贝最新变量的副本到工作内存→执行完代码→将更改后的共享变量的值刷新到主内存中→释放互斥锁。</p>
+        <h1 id="一、重载"><a href="#一、重载" class="headerlink" title="一、重载"></a>一、重载</h1><p>在一个程序中，可以定义多个名称相同的方法，但是参数的类型或个数必须不同。</p>
+<h1 id="二、重写"><a href="#二、重写" class="headerlink" title="二、重写"></a>二、重写</h1><p>子类在继承父类方法的时候，有时候需要对父类的方法进行一些修改，这就是重写。需要相同的方法名，参数列表和返回值类型。<br>子类在重写父类方法时，不能比父类的方法权限更严格，比如父类方法是Public，子类方法就不能是private。<br>在子类中，用super关键字访问父类的成员。(super.成员变量，super.成员方法)</p>
+<h1 id="三、递归"><a href="#三、递归" class="headerlink" title="三、递归"></a>三、递归</h1><p>方法的递归是指在一个方法的内部调用自身的过程。递归必须要有结束条件，不然会陷入无限递归的状态。</p>
+<h1 id="四、数组"><a href="#四、数组" class="headerlink" title="四、数组"></a>四、数组</h1><p><code>int[] x = new int[100]</code><br>上面代码的意思是，先声明一个变量x，该变量为一个int类型的数组。变量x回占用一块内存单元，它没有被分配初始值。然后创建一个数组，将数组的地址赋给x，这时内存中的状态才会发生变化。该数组中有100个元素，初始值都为0，每一个元素都有一个索引，最小的是0，最大的是99，也就是数组的长度-1。  </p>
+<h1 id="五、八大基本数据类型"><a href="#五、八大基本数据类型" class="headerlink" title="五、八大基本数据类型"></a>五、八大基本数据类型</h1><p>整数型四种(int，byte，short，long)<br>浮点型两种(float，double)<br>字符型(char)<br>布尔型(boolean)  </p>
+<p>String 类型不是基本数据类型，属于引用数据类型，它实际上是final修饰，所以也不可以继承。<br>区别:基本数据类型和引用类型的区别主要在于基本数据类型是分配在栈上的，而引用类型是分配在堆上的。  </p>
+<h1 id="六、面向对象的概念"><a href="#六、面向对象的概念" class="headerlink" title="六、面向对象的概念"></a>六、面向对象的概念</h1><p>我理解的意思差不多就是，我们用对象来对应我们的现实中的事物，用对象的关系来描述事物之间的关系，这种思想，就是面向对象。</p>
+<p>面向对象的特点是，封装性，继承性，多态性。</p>
+<h2 id="1-封装性"><a href="#1-封装性" class="headerlink" title="1. 封装性"></a>1. 封装性</h2><p>将对象的属性和行为封装起来，不需要让外界知道具体的实现细节。</p>
+<h2 id="2-继承性"><a href="#2-继承性" class="headerlink" title="2. 继承性"></a>2. 继承性</h2><p>继承性主要是描述类于类之间的关系。通过继承，我们可以无需编写原有类，对原有类的功能进行扩展。</p>
+<h2 id="3-多态类"><a href="#3-多态类" class="headerlink" title="3. 多态类"></a>3. 多态类</h2><p>指程序中允许出现重名现象，但不同的参数可以表现出不同的行为。</p>
+<h1 id="七、构造方法"><a href="#七、构造方法" class="headerlink" title="七、构造方法"></a>七、构造方法</h1><h2 id="构造方法满足的条件："><a href="#构造方法满足的条件：" class="headerlink" title="构造方法满足的条件："></a>构造方法满足的条件：</h2><p><strong>方法名与类名要相同</strong><br><strong>在方法名的前面没有返回值类型的声明</strong><br><strong>在方法中不能使用return语句返回一个值</strong></p>
+<p>当一个类被实例化后，会自动调用该类的构造方法。</p>
+<p>构造方法也可以重载，根据传入参数的不同，分别调用不同的构造方法。</p>
+<h1 id="八、this关键字"><a href="#八、this关键字" class="headerlink" title="八、this关键字"></a>八、this关键字</h1><p>this关键字有三种使用方法。</p>
+<h2 id="1-在方法里使用this调用类的成员变量，解决与局部变量名称冲突的问题。"><a href="#1-在方法里使用this调用类的成员变量，解决与局部变量名称冲突的问题。" class="headerlink" title="1. 在方法里使用this调用类的成员变量，解决与局部变量名称冲突的问题。"></a>1. 在方法里使用this调用类的成员变量，解决与局部变量名称冲突的问题。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class person&#123;</span><br><span class="line">int age;</span><br><span class="line">public person(int age)&#123;</span><br><span class="line">this.age = age;</span><br><span class="line">&#125;</span><br><span class="line">public int getAge()&#123;</span><br><span class="line">return this.age;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-在一个方法里，通过this关键字调用同一个类的另一个成员方法"><a href="#2-在一个方法里，通过this关键字调用同一个类的另一个成员方法" class="headerlink" title="2. 在一个方法里，通过this关键字调用同一个类的另一个成员方法"></a>2. 在一个方法里，通过this关键字调用同一个类的另一个成员方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void a()&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line">public void b()&#123;</span><br><span class="line">this.a();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-使用this调用类的构造方法，要注意：只能在构造方法里才能使用this调用其他的构造方法，而且this调用构造方法的语句必须在第一句，只能出现一次。"><a href="#3-使用this调用类的构造方法，要注意：只能在构造方法里才能使用this调用其他的构造方法，而且this调用构造方法的语句必须在第一句，只能出现一次。" class="headerlink" title="3.使用this调用类的构造方法，要注意：只能在构造方法里才能使用this调用其他的构造方法，而且this调用构造方法的语句必须在第一句，只能出现一次。"></a>3.使用this调用类的构造方法，要注意：只能在构造方法里才能使用this调用其他的构造方法，而且this调用构造方法的语句必须在第一句，只能出现一次。</h2><h1 id="九、static关键字"><a href="#九、static关键字" class="headerlink" title="九、static关键字"></a>九、static关键字</h1><p>static用于修饰类的成员，比如成员变量，成员方法，还有代码块。</p>
+<h2 id="1-静态变量"><a href="#1-静态变量" class="headerlink" title="1. 静态变量"></a>1. 静态变量</h2><p>用static修饰的成员变量，称为静态变量。被所有实例共享。用 类名.变量名 来访问。<br>static只能修饰成员变量，不能修饰局部变量。</p>
+<h2 id="2-静态方法"><a href="#2-静态方法" class="headerlink" title="2. 静态方法"></a>2. 静态方法</h2><p>静态方法可以不用实例化对象，就可以访问。类名.方法名() 这样就可以访问了。当然也可以实例化再访问。</p>
+<h2 id="3-静态代码块"><a href="#3-静态代码块" class="headerlink" title="3. 静态代码块"></a>3. 静态代码块</h2><p>使用一个{}包围起来的代码被称为一个代码块。用static修饰的代码块称为静态代码块。<br>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">static&#123;</span><br><span class="line">sout(&quot;hhh&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样。加载类的同时会执行该类的静态代码块，而且只有这个类在第一次被使用时才会加载。</p>
+<h1 id="十、内部类"><a href="#十、内部类" class="headerlink" title="十、内部类"></a>十、内部类</h1><p>在一个类的内部定义类，这样的类称为内部类。这个内部类所在的类被称为外部类。内部类又分三种，成员内部类，静态内部类，方法内部类。</p>
+<h2 id="1-成员内部类"><a href="#1-成员内部类" class="headerlink" title="1. 成员内部类"></a>1. 成员内部类</h2><p>就是在一个类中再定义一个类，普通的类。<br>内部类可以在外部类中被使用，并且能访问外部类的成员。<br>但如果想通过外部类去访问内部类，则需要通过外部类的对象去创建内部类对象。<br>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Outer.Inner inner = new Outer().new Inner()</span><br><span class="line">inner.show()</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-静态内部类"><a href="#2-静态内部类" class="headerlink" title="2. 静态内部类"></a>2. 静态内部类</h2><p>用static来修饰成员内部类，那么该内部类就被称为静态内部类。<br>它可以在不创建外部类对象的情况下被实例化。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Outer.Inner inner = new Outer.Inner();</span><br><span class="line">inner.show();</span><br></pre></td></tr></table></figure></p>
+<p>静态内部类中只能访问外部类的静态成员。<br>在静态内部类中可以定义的静态的成员，而在非静态内部类中不能定义静态成员。</p>
+<h2 id="3-方法内部类"><a href="#3-方法内部类" class="headerlink" title="3. 方法内部类"></a>3. 方法内部类</h2><p>方法内部类，是指在成员方法中定义的类，它只能在当前方法中被使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public void test()&#123;</span><br><span class="line">     class Inner&#123;</span><br><span class="line">	     void show&#123;</span><br><span class="line">		     sout(&quot;ggg&quot;);</span><br><span class="line">		 &#125;</span><br><span class="line">	 &#125;</span><br><span class="line">	 Inner in = new Inner();</span><br><span class="line">	 in.show();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main()&#123;</span><br><span class="line">Outer outer = new Outer();</span><br><span class="line">outer.test();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>方法内部类，只能在方法中创建该类的实例对象并调用show()方法。方法内部类中也可以访问外部类的成员变量。</p>
+<h1 id="十一、类的继承"><a href="#十一、类的继承" class="headerlink" title="十一、类的继承"></a>十一、类的继承</h1><p>类的继承指在一个现有类的基础上去构建一个新的类，构建出来的新类被称为子类，现有类被称为父类。用 extends 关键字来声明。</p>
+<p>需要注意：<br><strong>在Java中，类只支持单继承，不允许多重继承</strong><br><strong>多个类可以继承同一个父类</strong><br><strong>可以多层继承，B继承A，C继承B</strong><br><strong>子类在实例化时，会默认调用父类无参的构造方法</strong></p>
+<h1 id="十二、final关键字"><a href="#十二、final关键字" class="headerlink" title="十二、final关键字"></a>十二、final关键字</h1><p>final关键字用来修饰类，方法和变量。</p>
+<p><strong>修饰类时，该类将不可被继承</strong><br><strong>修饰一个类的方法时，那么这个类的子类将不能重写该方法</strong><br><strong>修饰变量时，那这个变量只能被赋值一次，而且需要在声明的时候赋予值，这个值将不能被修改</strong></p>
+<h1 id="十三、抽象类与接口"><a href="#十三、抽象类与接口" class="headerlink" title="十三、抽象类与接口"></a>十三、抽象类与接口</h1><h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p><strong>抽象类，就是类的抽象。我们知道类是客观事物的抽象，而抽象类又是类的进一步抽象。</strong></p>
+<p>举个例子：</p>
+<p>猫，狗，鸡。这三个动物都会叫，但每个动物叫的声音都不一样。我们把猫，狗，鸡这三个动物都抽象为类，每个类都有一个叫的方法，那么猫的方法输出就是喵，狗输出的是汪，鸡输出的是喳。这个时候我们就可以把这三个类，在进行一次抽象，筛选出他们的共同点，叫。然后这三个类，都继承这个抽象类，然后实现这个叫的方法。</p>
+<p><strong>1）抽象方法必须为public或者protected（因为如果为private，则不能被子类继承，子类便无法实现该方法），缺省情况下默认为public。</strong></p>
+<p><strong>2）抽象类不能用来创建对象；</strong></p>
+<p><strong>3）如果一个类继承于一个抽象类，则子类必须实现父类的抽象方法。如果子类没有实现父类的抽象方法，则必须将子类也定义为为abstract类。</strong></p>
+<p><strong>4) 包含抽象方法的类，必须声明为抽象类</strong></p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>更方便的对一个事物的功能进行拓展。是一种极度抽象的类型，它比抽象类更加“抽象”。</p>
+<p>接口中可以含有 变量和方法。但，接口中的变量会被指定为public static final变量，而方法会被指定为public abstract方法且只能是public abstract方法，并且接口中所有的方法不能有具体的实现，也就是说，接口中的方法必须都是抽象方法，并且一般情况下不在接口中定义变量。</p>
+<h2 id="抽象类与接口的区别"><a href="#抽象类与接口的区别" class="headerlink" title="抽象类与接口的区别"></a>抽象类与接口的区别</h2><p><strong>1、抽象类和接口都不能直接实例化，如果要实例化，抽象类变量必须指向实现所有抽象方法的子类对象，接口变量必须指向实现所有接口方法的类对象。</strong></p>
+<p><strong>2、抽象类要被子类继承，接口要被类实现。</strong></p>
+<p><strong>3、接口只能做方法申明，抽象类中可以做方法申明，也可以做方法实现</strong></p>
+<p><strong>4、接口里定义的变量只能是公共的静态的常量（public,static,final），抽象类中的变量可以是成员变量或者静态变量。</strong></p>
+<p><strong>5、抽象类里的抽象方法必须全部被子类所实现，如果子类不能全部实现父类抽象方法，那么该子类只能是抽象类。同样，一个实现接口的时候，如不能全部实现接口方法，那么该类也只能为抽象类。</strong></p>
+<p><strong>6、抽象方法只能申明，不能实现。abstract void abc();不能写成abstract void abc(){}。</strong></p>
+<p><strong>7、抽象类里可以没有抽象方法</strong></p>
+<p><strong>8、如果一个类里有抽象方法，那么这个类只能是抽象类</strong></p>
+<p><strong>9、抽象方法要被实现，所以不能是静态的，也不能是私有的（静态的变量或者方法是全局可用，可以被继承，但不能被重写。也就相应的不存在被实现）。</strong></p>
+<p><strong>10、接口可继承接口，并可多继承接口，但类只能单根继承。</strong></p>
 
       
     </div>
@@ -523,11 +568,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
-            <a href="/tags/多线程/" rel="tag"># 多线程</a>
-          
-            <a href="/tags/volatile关键字/" rel="tag"># volatile关键字</a>
+            <a href="/tags/Java基础概念/" rel="tag"># Java基础概念</a>
           
         </div>
       
@@ -540,8 +581,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/02/synchronized同步语句块/" rel="next" title="synchronized同步语句块">
-                <i class="fa fa-chevron-left"></i> synchronized同步语句块
+              <a href="/2019/05/28/OO音乐网站总结/" rel="next" title="OO音乐网站总结">
+                <i class="fa fa-chevron-left"></i> OO音乐网站总结
               </a>
             
           </div>
@@ -549,10 +590,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/05/线程间通信/" rel="prev" title="线程间通信">
-                线程间通信 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -844,7 +881,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-volatile-和-synchronized-的比较"><span class="nav-number">1.</span> <span class="nav-text">1.volatile 和 synchronized 的比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-i-操作时的非线程安全问题"><span class="nav-number">2.</span> <span class="nav-text">2. i++操作时的非线程安全问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-synchronized有和volatile一样的功能"><span class="nav-number">3.</span> <span class="nav-text">3.synchronized有和volatile一样的功能</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、重载"><span class="nav-number">1.</span> <span class="nav-text">一、重载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、重写"><span class="nav-number">2.</span> <span class="nav-text">二、重写</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、递归"><span class="nav-number">3.</span> <span class="nav-text">三、递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、数组"><span class="nav-number">4.</span> <span class="nav-text">四、数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、八大基本数据类型"><span class="nav-number">5.</span> <span class="nav-text">五、八大基本数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、面向对象的概念"><span class="nav-number">6.</span> <span class="nav-text">六、面向对象的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-封装性"><span class="nav-number">6.1.</span> <span class="nav-text">1. 封装性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-继承性"><span class="nav-number">6.2.</span> <span class="nav-text">2. 继承性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-多态类"><span class="nav-number">6.3.</span> <span class="nav-text">3. 多态类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、构造方法"><span class="nav-number">7.</span> <span class="nav-text">七、构造方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造方法满足的条件："><span class="nav-number">7.1.</span> <span class="nav-text">构造方法满足的条件：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八、this关键字"><span class="nav-number">8.</span> <span class="nav-text">八、this关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-在方法里使用this调用类的成员变量，解决与局部变量名称冲突的问题。"><span class="nav-number">8.1.</span> <span class="nav-text">1. 在方法里使用this调用类的成员变量，解决与局部变量名称冲突的问题。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-在一个方法里，通过this关键字调用同一个类的另一个成员方法"><span class="nav-number">8.2.</span> <span class="nav-text">2. 在一个方法里，通过this关键字调用同一个类的另一个成员方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-使用this调用类的构造方法，要注意：只能在构造方法里才能使用this调用其他的构造方法，而且this调用构造方法的语句必须在第一句，只能出现一次。"><span class="nav-number">8.3.</span> <span class="nav-text">3.使用this调用类的构造方法，要注意：只能在构造方法里才能使用this调用其他的构造方法，而且this调用构造方法的语句必须在第一句，只能出现一次。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九、static关键字"><span class="nav-number">9.</span> <span class="nav-text">九、static关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-静态变量"><span class="nav-number">9.1.</span> <span class="nav-text">1. 静态变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-静态方法"><span class="nav-number">9.2.</span> <span class="nav-text">2. 静态方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-静态代码块"><span class="nav-number">9.3.</span> <span class="nav-text">3. 静态代码块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十、内部类"><span class="nav-number">10.</span> <span class="nav-text">十、内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-成员内部类"><span class="nav-number">10.1.</span> <span class="nav-text">1. 成员内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-静态内部类"><span class="nav-number">10.2.</span> <span class="nav-text">2. 静态内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-方法内部类"><span class="nav-number">10.3.</span> <span class="nav-text">3. 方法内部类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十一、类的继承"><span class="nav-number">11.</span> <span class="nav-text">十一、类的继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十二、final关键字"><span class="nav-number">12.</span> <span class="nav-text">十二、final关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十三、抽象类与接口"><span class="nav-number">13.</span> <span class="nav-text">十三、抽象类与接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类"><span class="nav-number">13.1.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">13.2.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类与接口的区别"><span class="nav-number">13.3.</span> <span class="nav-text">抽象类与接口的区别</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1005,7 +1042,7 @@
   
     <script>
   window.livereOptions = {
-    refer: '2019/05/03/volatile关键字/'
+    refer: '2019/05/29/Java基础概念/'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
