@@ -96,16 +96,18 @@
 
 
 
-  <meta name="description" content="人生苦短，及时行乐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ggboy">
-<meta property="og:url" content="http://ggboy996.github.io/tags/依赖注入/index.html">
+  <meta name="description" content="目前我们的主流JVM用的是HotSpot,HotSpot虚拟机的垃圾回收机制采用的是分代收集算法，识别垃圾用的是可达性分析算法。 一、什么时候进行垃圾回收？(1) 程序主动调用 System.gc() 时候 (2) 系统自身绝对GC触发的时机。触发的依据：根据Eden区和From Space区的内存大小来决定。当内存大小不足时，则会启动GC线程并停止应用线程。 二、对谁进行垃圾回收？也就是说，我们">
+<meta name="keywords" content="jvm,GC,垃圾回收机制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GC详解">
+<meta property="og:url" content="http://ggboy996.github.io/2019/06/02/GC详解/index.html">
 <meta property="og:site_name" content="ggboy">
-<meta property="og:description" content="人生苦短，及时行乐">
+<meta property="og:description" content="目前我们的主流JVM用的是HotSpot,HotSpot虚拟机的垃圾回收机制采用的是分代收集算法，识别垃圾用的是可达性分析算法。 一、什么时候进行垃圾回收？(1) 程序主动调用 System.gc() 时候 (2) 系统自身绝对GC触发的时机。触发的依据：根据Eden区和From Space区的内存大小来决定。当内存大小不足时，则会启动GC线程并停止应用线程。 二、对谁进行垃圾回收？也就是说，我们">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-02T10:36:35.282Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ggboy">
-<meta name="twitter:description" content="人生苦短，及时行乐">
+<meta name="twitter:title" content="GC详解">
+<meta name="twitter:description" content="目前我们的主流JVM用的是HotSpot,HotSpot虚拟机的垃圾回收机制采用的是分代收集算法，识别垃圾用的是可达性分析算法。 一、什么时候进行垃圾回收？(1) 程序主动调用 System.gc() 时候 (2) 系统自身绝对GC触发的时机。触发的依据：根据Eden区和From Space区的内存大小来决定。当内存大小不足时，则会启动GC线程并停止应用线程。 二、对谁进行垃圾回收？也就是说，我们">
 
 
 
@@ -113,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://ggboy996.github.io/tags/依赖注入/">
+  <link rel="canonical" href="http://ggboy996.github.io/2019/06/02/GC详解/">
 
 
 
@@ -123,7 +125,7 @@
   };
 </script>
 
-  <title>标签: 依赖注入 | ggboy</title>
+  <title>GC详解 | ggboy</title>
   
 
 
@@ -171,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -264,7 +266,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -369,86 +371,228 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>依赖注入<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ggboy996.github.io/2019/06/02/GC详解/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="我爱死喷乱涂">
+      <meta itemprop="description" content="人生苦短，及时行乐">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ggboy">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/05/13/Spring事务管理/" itemprop="url">
-            
-              <span itemprop="name">Spring事务管理</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">GC详解
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-13T18:18:15+08:00" content="2019-05-13">
-          05-13
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-02 17:34:37" itemprop="dateCreated datePublished" datetime="2019-06-02T17:34:37+08:00">2019-06-02</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/jvm/" itemprop="url" rel="index"><span itemprop="name">jvm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>目前我们的主流JVM用的是HotSpot,HotSpot虚拟机的垃圾回收机制采用的是分代收集算法，识别垃圾用的是可达性分析算法。</strong></p>
+<h1 id="一、什么时候进行垃圾回收？"><a href="#一、什么时候进行垃圾回收？" class="headerlink" title="一、什么时候进行垃圾回收？"></a>一、什么时候进行垃圾回收？</h1><p>(1) 程序主动调用 System.gc() 时候</p>
+<p>(2) 系统自身绝对GC触发的时机。<br>触发的依据：根据Eden区和From Space区的内存大小来决定。当内存大小不足时，则会启动GC线程并停止应用线程。</p>
+<h1 id="二、对谁进行垃圾回收？"><a href="#二、对谁进行垃圾回收？" class="headerlink" title="二、对谁进行垃圾回收？"></a>二、对谁进行垃圾回收？</h1><p>也就是说，我们进行垃圾回收，回收的是哪些对象。<br>JVM采用了可达性分析算法，进行搜索，对于搜索不到的对象进行标记。</p>
+<p><strong>可达性分析算法：</strong><br>通过“GC Roots”对象作为起点进行搜索，如果在“GC Roots”和一个对象之间没有可达路径，则称该对象是不可达的，不过要注意的是被判定为不可达的对象不一定就会成为可回收对象。被判定为不可达的对象要成为可回收对象必须至少经历两次标记过程，如果在这两次标记过程中仍然没有逃脱成为可回收对象的可能性，则基本上就真的成为可回收对象了。</p>
+<p><strong>GC Root对象包含</strong>：</p>
+<p><strong>1) 虚拟机栈(栈帧中的本地变量表)中引用的对象。(可以理解为:引用栈帧中的本地变量表的所有对象)</strong></p>
+<p>虚拟机栈中的引用的对象，我们在程序中正常创建一个对象，对象会在堆上开辟一块空间，同时会将这块空间的地址作为引用保存到虚拟机栈中，如果对象生命周期结束了，那么引用就会从虚拟机栈中出栈，因此如果在虚拟机栈中有引用，就说明这个对象还是有用的，这种情况是最常见的。</p>
+<p><strong>2) 方法区中静态属性引用的对象(可以理解为:引用方法区该静态属性的所有对象)</strong></p>
+<p>我们在类中定义了全局的静态的对象，也就是使用了static关键字，由于虚拟机栈是线程私有的，所以这种对象的引用会保存在共有的方法区中，显然将方法区中的静态引用作为GC Roots是必须的。</p>
+<p><strong>3) 方法区中常量引用的对象(可以理解为:引用方法区中常量的所有对象)</strong></p>
+<p>常量引用，就是使用了static final关键字，由于这种引用初始化之后不会修改，所以方法区常量池里的引用的对象也应该作为GC Roots。最后一种是在使用JNI技术时，有时候单纯的Java代码并不能满足我们的需求，我们可能需要在Java中调用C或C++的代码，因此会使用native方法，JVM内存中专门有一块本地方法栈，用来保存这些对象的引用，所以本地方法栈中引用的对象也会被作为GC Roots。</p>
+<p><strong>4) 本地方法栈中(Native方法)引用的对象(可以理解为:引用Native方法的所有对象)</strong></p>
+<h1 id="三、做了什么？"><a href="#三、做了什么？" class="headerlink" title="三、做了什么？"></a>三、做了什么？</h1><p>做了什么？顾名思义，当然是把垃圾回收了。其实不止是释放了对象，对于搜索不到的对象，调用finalize()方法进行释放，对于可以搜索到的对象进行复制操作。</p>
+<p><strong>具体过程：</strong><br>当GC线程启动时，会通过可达性分析法把Eden区和From Space区的存活对象复制到To Space区，然后把Eden Space和From Space区的对象释放掉。当GC轮训扫描To Space区一定次数后，把依然存活的对象复制到老年代，然后释放To Space区的对象。</p>
+<p><strong>对于用可达性分析法搜索不到的对象，GC并不一定会回收该对象。要完全回收一个对象，至少需要经过两次标记的过程。</strong></p>
+<p><strong>第一次标记：</strong>对于一个没有其他引用的对象，筛选该对象是否有必要执行finalize()方法，如果没有执行必要，则意味可直接回收。（筛选依据：是否复写或执行过finalize()方法；因为finalize方法只能被执行一次）。</p>
+<p><strong>第二次标记：</strong>如果被筛选判定位有必要执行，则会放入FQueue队列，并自动创建一个低优先级的finalize线程来执行释放操作。如果在一个对象释放前被其他对象引用，则该对象会被移除FQueue队列。</p>
+<h1 id="四、GC过程中用到的回收算法："><a href="#四、GC过程中用到的回收算法：" class="headerlink" title="四、GC过程中用到的回收算法："></a>四、GC过程中用到的回收算法：</h1><p>通过上面的GC过程不难看出，Java堆中的年轻代和老年代采用了不同的回收算法。年轻代采用了<strong>复制法</strong>；而老年代采用了<strong>标记-整理法</strong>。</p>
+<h2 id="复制算法："><a href="#复制算法：" class="headerlink" title="复制算法："></a>复制算法：</h2><p>因为新生代中每次垃圾回收都要回收大部分对象，也就是说需要复制的操作次数较少，但是实际中并不是按照1：1的比例来划分新生代的空间的，一般来说是将新生代划分为一块较大的Eden空间和两块较小的Survivor空间，每次使用Eden空间和其中的一块Survivor空间，当进行回收时，将Eden和Survivor中还存活的对象复制到另一块Survivor空间中，然后清理掉Eden和刚才使用过的Survivor空间。</p>
+<h2 id="标记整理法："><a href="#标记整理法：" class="headerlink" title="标记整理法："></a>标记整理法：</h2><p>复制收集算法在对象存活率较高时就要执行较多的复制操作，效率将会变低。标记整理法其实是复制算法的优化，因为在老年代中，每次只有少量对象被回收，大量对象不被回收。和复制算法类似，但不同的是，在完成标记之后，它不是直接清理可回收对象，而是将存活对象都向一端移动，然后清理掉端边界以外的内存。</p>
+<h1 id="五、Minor-GC-，Full-GC-触发条件"><a href="#五、Minor-GC-，Full-GC-触发条件" class="headerlink" title="五、Minor GC ，Full GC 触发条件"></a>五、Minor GC ，Full GC 触发条件</h1><p><strong>Minor GC触发条件：</strong><br>当Eden区满时，触发Minor GC。</p>
+<p><strong>Full GC触发条件：</strong></p>
+<p>（1）调用System.gc时，系统建议执行Full GC，但是不必然执行</p>
+<p>（2）老年代空间不足</p>
+<p>（3）方法去空间不足</p>
+<p>（4）通过Minor GC后进入老年代的平均大小大于老年代的可用内存</p>
+<p>（5）由Eden区、From Space区向To Space区复制时，对象大小大于To Space可用内存，则把该对象转存到老年代，且老年代的可用内存小于该对象大小</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jvm/" rel="tag"># jvm</a>
+          
+            <a href="/tags/GC/" rel="tag"># GC</a>
+          
+            <a href="/tags/垃圾回收机制/" rel="tag"># 垃圾回收机制</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/29/Java基础概念/" rel="next" title="Java基础概念">
+                <i class="fa fa-chevron-left"></i> Java基础概念
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzY5MC8yMDIzMA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -468,8 +612,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -696,6 +849,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、什么时候进行垃圾回收？"><span class="nav-number">1.</span> <span class="nav-text">一、什么时候进行垃圾回收？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、对谁进行垃圾回收？"><span class="nav-number">2.</span> <span class="nav-text">二、对谁进行垃圾回收？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、做了什么？"><span class="nav-number">3.</span> <span class="nav-text">三、做了什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、GC过程中用到的回收算法："><span class="nav-number">4.</span> <span class="nav-text">四、GC过程中用到的回收算法：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#复制算法："><span class="nav-number">4.1.</span> <span class="nav-text">复制算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标记整理法："><span class="nav-number">4.2.</span> <span class="nav-text">标记整理法：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、Minor-GC-，Full-GC-触发条件"><span class="nav-number">5.</span> <span class="nav-text">五、Minor GC ，Full GC 触发条件</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -827,6 +997,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -842,6 +1016,23 @@
 
   
 
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/06/02/GC详解/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
 
 
   
