@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Postman使用方法]]></title>
+    <url>%2F2019%2F07%2F04%2FPostman%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[一、Get请求GET请求：点击Params，输入参数及value，可输入多个，即时显示在URL链接上，所以，GET请求的请求头与请求参数如在接口文档中无特别声明时，可以不填。 二、Post请求1. 表单提交Body 里选择 x-www-form-urlencoded ，然后填入你想填入的参数和值Headers 里填 Content-Type application/x-www-form-urlencoded 2. json提交Body 里选择 raw，后面选择 JSON(application/json)，然后在下面填入json格式的请求实例：12345678&#123; &quot;name&quot;:&quot;小黑&quot;, &quot;grade&quot;:&quot;天蝎座&quot;, &quot;phone&quot;:18612532946, &quot;sex&quot;:&quot;男&quot;, &quot;age&quot;:28, &quot;addr&quot;:&quot;河南省济源市北海大道32号&quot; &#125; 3. xml提交Body 里选择 raw，后面选择 XML(test/xml)，然后在下面填入xml格式的请求实例：12&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;&gt;&lt;book&gt;你好&lt;/book&gt; 4. 二进制提交Body 里选择 binary 三、登陆接口用post，下面输入username和password作为key，对应的值作为value。 四、使用cookie绕过登陆在Headers里，key填入Cookie,value填入，对应的 sid=sign值或者，在右上角的Cookie里添加。]]></content>
+      <categories>
+        <category>Postman</category>
+      </categories>
+      <tags>
+        <tag>Postman</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hibernate和MyBatis]]></title>
     <url>%2F2019%2F06%2F02%2FHibernate%E5%92%8CMyBatis%2F</url>
     <content type="text"><![CDATA[一、开发速度的对比MyBatis框架相对简单很容易上手，但也相对简陋些。 比起两者的开发速度，不仅仅要考虑到两者的特性及性能，更要根据项目需求去考虑究竟哪一个更适合项目开发，比如：一个项目中用到的复杂查询基本没有，就是简单的增删改查，这样选择hibernate效率就很快了，因为基本的sql语句已经被封装好了，根本不需要你去写sql语句，这就节省了大量的时间，但是对于一个大型项目，复杂语句较多，这样再去选择hibernate就不是一个太好的选择，选择mybatis就会加快许多，而且语句的管理也比较方便。 二、开发工作量的对比Hibernate和MyBatis都有相应的代码生成工具。可以生成简单基本的DAO层方法。针对高级查询，Mybatis需要手动编写SQL语句，以及ResultMap。而Hibernate有良好的映射机制，开发者无需关心SQL的生成与结果映射，可以更专注于业务流程 三、sql优化方面Hibernate的查询会将表中的所有字段查询出来，这一点会有性能消耗。Hibernate也可以自己写SQL来指定需要查询的字段，但这样就破坏了Hibernate开发的简洁性。而Mybatis的SQL是手动编写的，所以可以按需求指定查询的字段。 四、对象管理的对比Hibernate 是完整的对象/关系映射解决方案，它提供了对象状态管理（state management）的功能，使开发者不再需要理会底层数据库系统的细节。也就是说，相对于常见的 JDBC/SQL 持久层方案中需要管理 SQL 语句，Hibernate采用了更自然的面向对象的视角来持久化 Java 应用中的数据。MyBatis需要自己去写 SQL 语句。 五、缓存机制Hibernate缓存Hibernate一级缓存是Session缓存，利用好一级缓存就需要对Session的生命周期进行管理好。建议在一个Action操作中使用一个Session。一级缓存需要对Session进行严格管理。 Hibernate二级缓存是SessionFactory级的缓存。 SessionFactory的缓存分为内置缓存和外置缓存。内置缓存中存放的是SessionFactory对象的一些集合属性包含的数据(映射元素据及预定SQL语句等),对于应用程序来说,它是只读的。外置缓存中存放的是数据库数据的副本,其作用和一级缓存类似.二级缓存除了以内存作为存储介质外,还可以选用硬盘等外部存储设备。二级缓存称为进程级缓存或SessionFactory级缓存，它可以被所有session共享，它的生命周期伴随着SessionFactory的生命周期存在和消亡。 MyBatis缓存Mybatis对缓存提供支持，但是在没有配置的默认情况下，它只开启一级缓存，一级缓存只是相对于同一个SqlSession而言。 SqlSessionFactory层面上的二级缓存默认是不开启的，二级缓存的开席需要进行配置，实现二级缓存的时候，MyBatis要求返回的POJO必须是可序列化的。 也就是要求实现Serializable接口，配置方法很简单，只需要在映射XML文件配置就可以开启缓存了。 六、总结相同点Hibernate与MyBatis都可以是通过SessionFactoryBuider由XML配置文件生成SessionFactory，然后由SessionFactory 生成Session，最后由Session来开启执行事务和SQL语句。其中SessionFactoryBuider，SessionFactory，Session的生命周期都是差不多的。 Mybatis优势MyBatis可以进行更为细致的SQL优化，可以减少查询字段。MyBatis容易掌握，而Hibernate门槛较高。 Hibernate优势Hibernate的DAO层开发比MyBatis简单，Mybatis需要维护SQL和结果映射。Hibernate对对象的维护和缓存要比MyBatis好，对增删改查的对象的维护要方便。Hibernate数据库移植性很好，MyBatis的数据库移植性不好，不同的数据库需要写不同SQL。Hibernate有更好的二级缓存机制，可以使用第三方缓存。MyBatis本身提供的缓存机制不佳。 他人总结Hibernate功能强大，数据库无关性好，O/R映射能力强，如果你对Hibernate相当精通，而且对Hibernate进行了适当的封装，那么你的项目整个持久层代码会相当简单，需要写的代码很少，开发速度很快，非常爽。Hibernate的缺点就是学习门槛不低，要精通门槛更高，而且怎么设计O/R映射，在性能和对象模型之间如何权衡取得平衡，以及怎样用好Hibernate方面需要你的经验和能力都很强才行。iBATIS入门简单，即学即用，提供了数据库查询的自动对象绑定功能，而且延续了很好的SQL使用经验，对于没有那么高的对象模型要求的项目来说，相当完美。iBATIS的缺点就是框架还是比较简陋，功能尚有缺失，虽然简化了数据绑定代码，但是整个底层数据库查询实际还是要自己写的，工作量也比较大，而且不太容易适应快速数据库修改。]]></content>
@@ -271,17 +282,6 @@
       <tags>
         <tag>Java</tag>
         <tag>多线程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Postman使用方法]]></title>
-    <url>%2F2019%2F04%2F26%2FPostman%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[一、Get请求GET请求：点击Params，输入参数及value，可输入多个，即时显示在URL链接上，所以，GET请求的请求头与请求参数如在接口文档中无特别声明时，可以不填。 二、Post请求1. 表单提交Body 里选择 x-www-form-urlencoded ，然后填入你想填入的参数和值Headers 里填 Content-Type application/x-www-form-urlencoded 2. json提交Body 里选择 raw，后面选择 JSON(application/json)，然后在下面填入json格式的请求实例：12345678&#123; &quot;name&quot;:&quot;小黑&quot;, &quot;grade&quot;:&quot;天蝎座&quot;, &quot;phone&quot;:18612532946, &quot;sex&quot;:&quot;男&quot;, &quot;age&quot;:28, &quot;addr&quot;:&quot;河南省济源市北海大道32号&quot; &#125; 3. xml提交Body 里选择 raw，后面选择 XML(test/xml)，然后在下面填入xml格式的请求实例：12&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;&gt;&lt;book&gt;你好&lt;/book&gt; 4. 二进制提交Body 里选择 binary 三、登陆接口用post，下面输入username和password作为key，对应的值作为value。 四、使用cookie绕过登陆在Headers里，key填入Cookie,value填入，对应的 sid=sign值或者，在右上角的Cookie里添加。]]></content>
-      <categories>
-        <category>Postman</category>
-      </categories>
-      <tags>
-        <tag>Postman</tag>
       </tags>
   </entry>
   <entry>
