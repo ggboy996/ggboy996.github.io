@@ -558,7 +558,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ggboy996.github.io/2019/06/02/Hibernate和MyBatis/">
+    <link itemprop="mainEntityOfPage" href="http://ggboy996.github.io/2019/06/02/GC详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="我爱死喷乱涂">
@@ -578,7 +578,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/02/Hibernate和MyBatis/" class="post-title-link" itemprop="url">Hibernate和MyBatis</a>
+                <a href="/2019/06/02/GC详解/" class="post-title-link" itemprop="url">GC详解</a>
               
             
           </h1>
@@ -621,7 +621,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/jvm/" itemprop="url" rel="index"><span itemprop="name">jvm</span></a></span>
 
                 
                 
@@ -659,14 +659,14 @@
         
           
             <p>
-              一、开发速度的对比MyBatis框架相对简单很容易上手，但也相对简陋些。
-比起两者的开发速度，不仅仅要考虑到两者的特性及性能，更要根据项目需求去考虑究竟哪一个更适合项目开发，比如：一个项目中用到的复杂
+              目前我们的主流JVM用的是HotSpot,HotSpot虚拟机的垃圾回收机制采用的是分代收集算法，识别垃圾用的是可达性分析算法。
+一、什么时候进行垃圾回收？(1) 程序主动调用 System.gc()
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/06/02/Hibernate和MyBatis/#more" rel="contents">
+              <a class="btn" href="/2019/06/02/GC详解/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -894,7 +894,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ggboy996.github.io/2019/06/02/GC详解/">
+    <link itemprop="mainEntityOfPage" href="http://ggboy996.github.io/2019/06/02/Hibernate和MyBatis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="我爱死喷乱涂">
@@ -914,7 +914,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/02/GC详解/" class="post-title-link" itemprop="url">GC详解</a>
+                <a href="/2019/06/02/Hibernate和MyBatis/" class="post-title-link" itemprop="url">Hibernate和MyBatis</a>
               
             
           </h1>
@@ -957,7 +957,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/jvm/" itemprop="url" rel="index"><span itemprop="name">jvm</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -995,14 +995,14 @@
         
           
             <p>
-              目前我们的主流JVM用的是HotSpot,HotSpot虚拟机的垃圾回收机制采用的是分代收集算法，识别垃圾用的是可达性分析算法。
-一、什么时候进行垃圾回收？(1) 程序主动调用 System.gc()
+              一、开发速度的对比MyBatis框架相对简单很容易上手，但也相对简陋些。
+比起两者的开发速度，不仅仅要考虑到两者的特性及性能，更要根据项目需求去考虑究竟哪一个更适合项目开发，比如：一个项目中用到的复杂
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/06/02/GC详解/#more" rel="contents">
+              <a class="btn" href="/2019/06/02/Hibernate和MyBatis/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -2102,7 +2102,7 @@ execution———用来匹配执行方法的连接点语法结构：   executio
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2146,7 +2146,7 @@ execution———用来匹配执行方法的连接点语法结构：   executio
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2197,7 +2197,9 @@ execution———用来匹配执行方法的连接点语法结构：   executio
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2282,7 +2284,9 @@ execution———用来匹配执行方法的连接点语法结构：   executio
                     
                       
                     
-                    <span class="site-state-item-count">34</span>
+                      
+                    
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
